@@ -1,0 +1,108 @@
+body.single-product {
+    .section-1 {
+        @include basicMarginTop(50);
+
+        @include maxw($mobileBreakpoint) {
+            margin-bottom: 50px;
+        }
+
+
+        .container > .cols-wrap {
+            display: flex;
+
+            @include maxw($mobileBreakpoint) {
+                display: block;
+            }
+
+            .col-gallery {
+                @include basicMarginRight(50);
+
+                @include maxw($mobileBreakpoint) {
+                    @include basicMarginRight(0);
+                }
+            }
+
+            .col-details {
+                flex: 1;
+
+                .am-product-labels-row {
+                    @include basicMarginBottom(10);
+                }
+
+                .title {
+                    font-weight: bold;
+                }
+
+
+                .description {
+                    line-height: 1.7;
+                    @include basicMarginBottom30();
+                    white-space: pre-wrap;
+                }
+
+                .am-company-set-description {
+                    @include basicMarginBottom(20);
+
+                }
+
+
+                .price {
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    @include basicMarginBottom30();
+                    @include basicFontSize(24);
+
+                }
+
+                .variations-section {
+                    > label {
+                        @include basicMarginRight(10);
+
+                        &:last-child {
+                            @include basicMarginRight(0);
+                        }
+
+                    }
+                }
+
+                .btns-wrap {
+                    @include basicMarginTop(30);
+                    display: flex;
+
+                    > *:first-child {
+                        @include basicMarginRight(20);
+
+                    }
+                }
+
+                .categories-wrap {
+                    @include basicMarginTop(30);
+
+                    .links-wrap {
+                        a {
+                            display: inline-block;
+                            @include basicMarginRight(15);
+
+                            &:last-child {
+                                @include basicMarginRight(0);
+                            }
+
+                        }
+                    }
+                }
+
+                .am-product-card-input {
+                    @include basicMarginTop(20);
+
+                }
+
+                .am-complementary-products{
+                    @include basicMarginTop(30);
+                    @include basicPaddingTop(20);
+                    border-top: 1px solid $colorBorders;
+                }
+
+            }
+        }
+    }
+}

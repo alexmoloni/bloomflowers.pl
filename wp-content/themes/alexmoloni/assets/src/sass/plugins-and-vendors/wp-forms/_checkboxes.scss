@@ -1,0 +1,76 @@
+div.wpforms-container {
+    .wpforms-form {
+
+        .wpforms-field-checkbox {
+
+            @include maxw($br-xs) {
+                padding-left: 10px;
+            }
+
+            ul {
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    padding-left: 10px !important;
+
+                    label {
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+            input[type=checkbox] {
+                position: relative;
+                cursor: pointer;
+                background-color: transparent;
+                outline: none;
+                border: none;
+                width: 1px;
+                height: 1px;
+                padding: 15px;
+
+                &:before,
+                &:after {
+                    @include blockAfterorBefore();
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+
+                    transform: translate(-50%, -50%);
+                }
+
+                &:before {
+                    border: 2px solid $color2;
+                    border-radius: 50%;
+                    background-color: white;
+                    top: 50%;
+                    left: 50%;
+                }
+
+                &:after {
+                    width: 3px;
+                    height: 9px;
+                    top: 60%;
+                    left: 42%;
+                    border: solid $color2;
+                    border-width: 0 3px 3px 0;
+                    transform: rotate(45deg) translate(-50%, -50%);
+                    transform-origin: center top;
+                    opacity: 0;
+                    @include basicTransition();
+                }
+
+                &:checked:after {
+                    opacity: 1;
+                }
+            }
+
+            .wpforms-field-description {
+                font-size: 16px;
+            }
+        }
+
+
+    }
+}

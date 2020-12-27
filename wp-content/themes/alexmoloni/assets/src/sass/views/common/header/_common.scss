@@ -1,0 +1,56 @@
+header.main-header {
+    .header-inner-wrap {
+        @include basicPaddingTopBottom(12);
+
+    }
+
+    .logo-wrap {
+        .text-to-right {
+            @include minw($brMobileMenu) {
+                @include maxw(1200px) {
+                    display: none;
+                }
+            }
+
+            @include maxw($br-xs) {
+                display: none;
+            }
+        }
+    }
+
+    .container-wide {
+        position: relative;
+    }
+
+    .header-categories {
+        position: fixed;
+        left: 0;
+        width: calc(100% - #{toVw(120)});
+        visibility: hidden;
+        opacity: 0;
+        @include basicTransition();
+        background-color: #fff;
+        @include basicBoxAndInputShadow();
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        @include basicPaddingAll(30);
+        @include containerWide();
+
+        @include maxw($br-l) {
+            width: calc(100% - 60px);
+        }
+
+        @include maxw($mobileBreakpoint) {
+            display: none;
+        }
+
+    }
+
+    li.menu-item-shop:hover {
+        .header-categories {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+}

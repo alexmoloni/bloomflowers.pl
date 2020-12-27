@@ -1,0 +1,30 @@
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid $color2;
+    background: $color2a;
+}
+
+.ui-widget {
+    font-family: $font2;
+}
+
+.ui-state-default {
+    font-family: $font1;
+}
+
+.ui-widget-header {
+    border: none;
+    background: none;
+}
+
+.ui-widget.ui-widget-content {
+    border: none;
+}
+
+.ui-tabs .ui-tabs-panel {
+    border: 1px solid $colorBorders;
+    border-width: 1px;
+}
+
+.ui-widget-content a {
+    color: $color2;
+}

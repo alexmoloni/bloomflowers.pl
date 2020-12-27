@@ -1,0 +1,11 @@
+.acf-fields>.acf-field-message {
+     font-size: 40px;
+ }
+
+#poststuff .acf-postbox .postbox-header > h2 {
+    font-size: 25px;
+}
+
+.wp-block {
+    max-width: 1000px;
+}

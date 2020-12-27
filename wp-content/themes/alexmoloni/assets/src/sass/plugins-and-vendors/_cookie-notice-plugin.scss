@@ -1,0 +1,65 @@
+#cookie-notice {
+    background-color: $colorGrey2 !important;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    &.cookie-notice-hidden {
+        display: none;
+    }
+
+
+    #cn-close-notice {
+        display: none;
+    }
+
+    .cookie-notice-container {
+        width: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        @include container();
+        font-size: 13px;
+        font-weight: 300;
+        text-align: left;
+        font-family: $textFont;
+
+        @include maxw($mobileBreakpoint) {
+            font-size: 11px;
+        }
+
+        #cn-notice-text {
+            margin-right: 50px;
+            color: $color1;
+        }
+
+        .cn-buttons-container {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+
+            a {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $color2;
+                font-weight: bold;
+            }
+        }
+
+        .cn-button {
+            font-size: 13px;
+            text-transform: none;
+            font-weight: 500;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+        }
+
+        a {
+            color: $color3;
+        }
+    }
+
+}

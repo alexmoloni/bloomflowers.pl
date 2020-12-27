@@ -1,0 +1,13 @@
+.am-gallery-section {
+    .images-wrap {
+        @include basicGrid();
+        grid-template-columns: repeat(auto-fill, minmax(200px, 33fr));
+        @include basicVwProperty(grid-row-gap, 30);
+        @include basicVwProperty(grid-column-gap, 30);
+
+        .image-item {
+            @include basicHeight(250);
+            @include fitFigurePictureImg();
+        }
+    }
+}

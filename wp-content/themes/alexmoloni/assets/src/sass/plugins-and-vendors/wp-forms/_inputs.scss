@@ -1,0 +1,76 @@
+div.wpforms-container {
+    .wpforms-form {
+
+
+        .wpforms-field-container {
+            .wpforms-field {
+                padding: 0;
+                margin-bottom: toVw(30);
+                width: toVw(500);
+
+                @include maxw($br-l) {
+                    margin-bottom: 30px;
+                    width: 500px;
+                }
+
+                @include maxw($mobileBreakpoint) {
+                    width: 100%;
+                    max-width: 500px;
+                }
+
+                input[type=text],
+                input[type=number],
+                input[type=password],
+                input[type=email],
+                input[type=search],
+                textarea {
+                    padding-left: toVw(30);
+                    color: $color1;
+                    background-color: #fff;
+
+                    &::placeholder {
+                        color: $colorGrey1;
+                    }
+
+                    @include maxw($br-l) {
+                        padding-left: 30px;
+                    }
+
+                }
+
+                input[type=text],
+                input[type=number],
+                input[type=password],
+                input[type=email],
+                input[type=search] {
+                    height: toVw(50);
+
+                    @include maxw($br-l) {
+                        height: 50px;
+                    }
+
+                    @include maxw($mobileBreakpoint) {
+                        height: 45px;
+                    }
+                }
+
+                textarea {
+                    padding-top: toVw(16);
+
+                    @include maxw($br-l) {
+                        padding-top: 16px;
+                    }
+
+                    @include maxw($br-xs) {
+                        padding-top: 12px;
+                    }
+                }
+
+
+            }
+
+
+        }
+
+    }
+}

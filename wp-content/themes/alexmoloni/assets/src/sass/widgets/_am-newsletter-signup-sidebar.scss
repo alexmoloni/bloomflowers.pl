@@ -1,0 +1,96 @@
+.am-newsletter-signup-sidebar {
+    @include basicMarginTop(40);
+    @include basicPaddingTop(25);
+    @include basicPaddingBottom(10);
+    @include basicPaddingLeftRight(17);
+    background-color: $color2;
+    position: relative;
+
+    .heading {
+        @include basicMarginBottom(8);
+        @include basicFontSize(18);
+        font-weight: bold;
+    }
+
+    .subheading {
+        @include basicMarginBottom(12);
+        color: #fff;
+        @include basicFontSize(14);
+        font-weight: 300;
+
+    }
+
+    .bg-icon {
+        position: absolute;
+        z-index: 0;
+        width: 76%;
+        height: auto;
+        right: 8%;
+        bottom: -30%;
+        opacity: 0.4;
+    }
+
+    .content-wrap {
+        position: relative;
+        z-index: 1;
+        color: #fff;
+    }
+
+    form {
+        @include basicNewsletterSignupForm();
+        align-items: stretch;
+
+        .input-btn-wrap {
+            input[type=email],
+            input[type=submit] {
+                padding: toVw(10) toVw(15) !important;
+
+                @include maxw($mobileBreakpoint) {
+                    padding: 10px 15px !important;
+                }
+            }
+
+            input[type=email] {
+                @include basicFontSize(15);
+                @include basicHeight(42);
+                background-color: #fff;
+                color: $color1 !important;
+                border: none !important;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+
+                &::placeholder {
+                    @include basicFontSize(15);
+                }
+
+                @include maxw($mobileBreakpoint) {
+                    font-size: 15px !important;
+                }
+            }
+
+            input[type=submit] {
+                @include basicVwProperty(flex-basis, 50);
+                border: none !important;
+                background-color: $colorGrey2 !important;
+                font-size: 0 !important;
+                @include with-css-background();
+                background-image: url('/images/svg/arrow-right-medium-grey.svg');
+                background-size: auto 35%;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                height: auto !important;
+                @include basicTransition();
+            }
+
+        }
+
+        .label-checkbox {
+            @include basicFontSize(13);
+
+            input {
+                margin-right: 5px;
+            }
+        }
+
+    }
+}

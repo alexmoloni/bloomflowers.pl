@@ -1,0 +1,11 @@
+.header-main-footer-wrap {
+    position: relative;
+
+
+    main.main {
+        padding-top: 0;
+        @include basicPadding(bottom, 60);
+
+    }
+
+}

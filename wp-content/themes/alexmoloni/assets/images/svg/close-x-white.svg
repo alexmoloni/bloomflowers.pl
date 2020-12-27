@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="45.031" height="45.031" viewBox="0 0 45.031 45.031">
+    <defs>
+        <style>
+            .css-not-loaded #close-x-black {
+            display:none;
+        </style>
+    </defs>
+    <path style="fill: #fff" id="close-x-black"
+          d="M289.847,641.5l16.044-16.044a3.782,3.782,0,1,0-5.348-5.348L284.5,636.151l-16.044-16.044a3.782,3.782,0,1,0-5.348,5.348L279.151,641.5l-16.044,16.044a3.782,3.782,0,0,0,5.348,5.348L284.5,646.847l16.044,16.044a3.782,3.782,0,0,0,5.348-5.348Z"
+          transform="translate(-262 -619)"/>
+</svg>

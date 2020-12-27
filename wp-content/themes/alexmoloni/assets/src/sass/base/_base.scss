@@ -1,0 +1,170 @@
+html {
+    font-family: $textFont;
+    font-size: toVw(15);
+    color: $color1;
+    line-height: 1.4;
+    font-weight: 400;
+
+    @include maxw($br-l) {
+        font-size: 15px;
+    }
+}
+
+//in order for GSAP to work correctly
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html * {
+    box-sizing: border-box;
+
+}
+
+input, label, select, button, textarea {
+    font-family: $textFont;
+    line-height: 1.2;
+}
+
+.screen-reader-text {
+    font-size: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    display: none;
+}
+
+strong {
+    font-weight: bold;
+}
+
+main.main {
+    //removed on desktop because of section-image that needs to overflow
+    @include maxw($mobileBreakpoint) {
+        overflow: hidden;
+    }
+}
+
+
+.mobile-only {
+    @include minw($mobileBreakpoint) {
+        display: none !important;
+    }
+}
+
+.desktop-only {
+    @include maxw($mobileBreakpoint) {
+        display: none !important;
+    }
+}
+
+.with-shadow {
+    box-shadow: 0px 7px 10.7px 0.3px rgba(0, 0, 0, 0.21);
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.bg-light-grey {
+    background-color: $colorGrey2;
+}
+
+.mb20 {
+    @include basicMarginBottom(20);
+}
+
+.mb30 {
+    @include basicMarginBottom(30);
+}
+
+.mb40 {
+    @include basicMarginBottom(40);
+}
+
+.mb50 {
+    @include basicMarginBottom(50);
+}
+
+.mb60 {
+    @include basicMarginBottom(60);
+}
+
+.mt20 {
+    @include basicMarginTop(20);
+}
+
+.mt30 {
+    @include basicMarginTop(30);
+}
+
+.mt40 {
+    @include basicMarginTop(40);
+}
+
+.mt50 {
+    @include basicMarginTop(50);
+}
+
+.mt60 {
+    @include basicMarginTop(60);
+}
+
+.pb20 {
+    @include basicPaddingBottom(20);
+}
+
+.pb30 {
+    @include basicPaddingBottom(30);
+}
+
+.pb40 {
+    @include basicPaddingBottom(40);
+}
+
+.pb50 {
+    @include basicPaddingBottom(50);
+}
+
+.pb60 {
+    @include basicPaddingBottom(60);
+}
+
+.pt20 {
+    @include basicPaddingTop(20);
+}
+
+.pt30 {
+    @include basicPaddingTop(30);
+}
+
+.pt40 {
+    @include basicPaddingTop(40);
+}
+
+.pt50 {
+    @include basicPaddingTop(50);
+}
+
+.pt60 {
+    @include basicPaddingTop(60);
+}
+
+.pink {
+    color: $color2 !important;
+}

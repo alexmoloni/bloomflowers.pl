@@ -1,0 +1,34 @@
+.post-content {
+    @include postContent();
+}
+
+.am-pretty-checkbox {
+    font-family: $font1;
+    @include basicMarginBottom(15);
+
+    &:hover input ~ .checkmark {
+        background-color: rgba(216, 32, 105, 0.7);
+    }
+
+    .checkmark {
+        background-color: #fff;
+        border: 1px solid $colorBorders;
+    }
+
+    input:checked ~ .checkmark {
+        background-color: $color2;
+        border-color: $color2;
+    }
+
+}
+
+body.woocommerce-page,
+body.post-type-archive-product {
+    .menu-item.menu-item-shop {
+        > a {
+            &:before, &:after {
+                //display: none !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,125 @@
+.mini-cart-wrap {
+    @include basicPaddingAll(15);
+    background-color: #fff;
+    position: absolute;
+    @include basicTransition();
+    max-height: 0;
+    top: 100%;
+    left: auto;
+    right: 0;
+    width: 245px;
+    border: 1px solid #e8e8e8;
+    text-align: left;
+    z-index: 101;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s, max-height 0s linear .15s;
+    overflow: hidden;
+
+    @include maxw($mobileBreakpoint) {
+        display: none;
+    }
+
+    &.loading {
+        .am-mini-cart {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+    }
+}
+
+.cart-wrap:hover {
+    .mini-cart-wrap {
+        visibility: visible;
+        max-height: 100vh;
+        opacity: 1;
+        transition: max-height .6s cubic-bezier(.53, .01, .18, 1), opacity 0s ease;
+    }
+}
+
+.am-mini-cart {
+    @include basicTransition();
+
+
+    .items-wrap {
+        @include basicMarginBottom20();
+
+    }
+
+    .cart-item {
+        @include basicMarginBottom(15);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        figure {
+            @include basicWidth(50);
+            @include basicHeight(50);
+            @include fitFigurePictureImg();
+            @include basicMarginRight(8);
+        }
+
+        .col-right {
+            @include basicWidth(120);
+            @include basicMarginRight(8);
+            @include basicFontSize(12);
+
+
+            .title {
+                font-weight: 500;
+                @include basicMarginTopBottom(4);
+
+            }
+
+            .row-bottom {
+                color: $colorGrey1;
+            }
+        }
+
+        .col-remove {
+            @include basicTransition();
+            @include basicPaddingAll(3);
+            border-radius: 50%;
+
+            &:hover {
+                background-color: $color2b;
+            }
+
+        }
+
+        .btn-remove-item {
+            font-size: 0;
+            @include with-css-background();
+            background-image: url('/images/svg/garbage.svg');
+            @include basicWidth(12);
+            @include basicHeight(12);
+            display: block;
+
+        }
+
+    }
+
+    .cart-total-wrap {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        justify-content: space-between;
+        @include basicFontSize(13);
+        @include basicMarginTop(4);
+        @include basicMarginBottom(15);
+
+
+    }
+
+    .btn-wrap {
+        text-align: center;
+
+        a {
+            @include basicFontSize(14);
+            @include basicHeight(32);
+
+        }
+    }
+
+}

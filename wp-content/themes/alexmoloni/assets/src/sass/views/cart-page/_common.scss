@@ -1,0 +1,65 @@
+body.woocommerce-cart {
+    .cart_item {
+        @include maxw($mobileBreakpoint) {
+            position: relative;
+        }
+
+        td.product-remove {
+            @include maxw($mobileBreakpoint) {
+                position: absolute;
+                top: 11px;
+                left: 0;
+                border: none !important;
+                background-color: transparent !important;
+
+            }
+
+            a {
+                @include basicWidth(25);
+                @include basicHeight(25);
+                font-size: 0;
+                @include with-css-background();
+                background-image: url('/images/svg/delete.svg');
+                cursor: pointer;
+                background-size: 60%;
+                @include basicTransition();
+
+                @include maxw($mobileBreakpoint) {
+                    width: 24px;
+                    height: 24px;
+                }
+
+
+                &:hover {
+                    background-color: $color2b;
+                }
+            }
+
+        }
+
+        .product-thumbnail {
+            @include maxw($mobileBreakpoint) {
+                img {
+                    width: 50px;
+                }
+            }
+        }
+
+        .variation {
+            font-size: 12px;
+
+            dt {
+                font-weight: bold;
+            }
+
+            dd {
+
+            }
+        }
+    }
+
+    table.cart td.actions .input-text {
+        width: 120px;
+        height: 40px;
+    }
+}

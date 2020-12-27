@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="16px" viewBox="0 0 20 16" version="1.1" xmlns="http://www.w3.org/2000/svg" >
+
+	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+		<g id="M01.1-Explorar-+-full-filtros-abierto" transform="translate(-355.000000, -145.000000)" stroke="#000000" stroke-width="1.5">
+			<g id="controls" transform="translate(364.500000, 153.000000) rotate(-270.000000) translate(-364.500000, -153.000000) translate(358.000000, 144.000000)">
+				<path d="M10.1111111,17.3333333 L10.1111111,0 M2.88888889,17.3333333 L2.88888889,0 M2.57571742e-14,14.8888889 L5.77777778,14.8888889 M7.22222222,2.44444444 L13,2.44444444" id="controls-open"></path>
+			</g>
+		</g>
+	</g>
+</svg>

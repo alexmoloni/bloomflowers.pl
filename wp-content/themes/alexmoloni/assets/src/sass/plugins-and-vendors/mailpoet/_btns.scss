@@ -1,0 +1,16 @@
+form.mailpoet_form {
+    input[type=submit] {
+        @include heading4();
+        text-transform: uppercase;
+        color: $color1;
+        border-color: $color1 !important;
+        cursor: pointer;
+        @include basicTransition();
+
+        &:hover {
+            background-color: $color1;
+            color: #fff;
+        }
+    }
+
+}

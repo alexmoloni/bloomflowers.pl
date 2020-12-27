@@ -1,0 +1,274 @@
+.slick-arrow {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    font-size: 0;
+    cursor: pointer;
+    //opacity: 0.7;
+    background-size: contain;
+    z-index: 100;
+
+}
+
+.slick-slider {
+    .slick-slide {
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+
+//place inside main slider element
+@mixin slickSliderHideUntilLoaded() {
+    display: none;
+    &.slick-initialized {
+        display: block;
+    }
+}
+
+@mixin slickFixSlidDivVerticalAlign() {
+    .slick-slide > div {
+        vertical-align: bottom;
+    }
+}
+
+
+//place inside main slider element
+@mixin slickSliderSlidesGutter($slides_gutter: 20px) {
+    overflow: hidden;
+
+    > .slick-list {
+        margin: 0 -#{$slides_gutter / 2};
+
+        > .slick-track > .slick-slide {
+            margin: 0 #{$slides_gutter / 2};
+        }
+    }
+
+}
+
+
+//place inside main slider element
+@mixin slickSliderSlidesGutterVariableWidthSlider($slides_gutter: 20px) {
+    .slick-slide {
+        margin-right: $slides_gutter;
+    }
+
+}
+
+@mixin slickSliderResetSlidesGutter($slides_gutter: 20px) {
+    .slick-slide {
+        margin-right: 0;
+    }
+
+}
+
+@mixin slickDotsBelow1() {
+    .slick-dots {
+        display: flex;
+        font-size: 0;
+        margin-top: 30px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        li {
+            border-radius: 50%;
+            width: $slick-dot-size;
+            height: $slick-dot-size;
+            margin-right: 16px;
+            margin-bottom: 0;
+            padding: 0;
+            cursor: pointer;
+            display: inline-block;
+
+            @if $slick-dots-fill {
+                background-color: $slick-dots-bgc;
+                border: none;
+            } @else {
+                border: 2px solid $slick-dots-bdc;
+            }
+
+            &:last-child {
+                margin-right: 0 !important;
+            }
+
+            &.slick-active {
+                background-color: $slick-active-dot-bgc;
+            }
+        }
+
+        button {
+            font-size: 0;
+        }
+    }
+}
+
+//dont use directly, use mixins below
+@mixin slickSliderArrowsOnSidesBase() {
+    @include basicBoxAndInputShadow();
+    @include basicTransition();
+    background-color: #fff;
+    width: 36px;
+    height: 72px;
+    position: absolute;
+    z-index: 200;
+    cursor: pointer;
+    background-size: 35%;
+    opacity: 0.3;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include maxw($mobileBreakpoint) {
+        width: 25px;
+        height: 50px;
+    }
+
+    &.slick-disabled {
+        opacity: 0 !important;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    &.slick-prev {
+        left: 0;
+        background-image: url('/images/svg/arrow-left-pink.svg');
+        background-position-x: 35%;
+
+    }
+    &.slick-next {
+        right: 0;
+        background-image: url('/images/svg/arrow-right-pink.svg');
+        background-position-x: 65%;
+
+
+    }
+}
+
+//use like .slider {@include slickArrowStyle2() }
+@mixin slickSliderArrowsSemiTransparentCircled() {
+    &:hover {
+        .slick-arrow {
+            opacity: 1;
+        }
+    }
+
+    .slick-arrow {
+        @include slickSliderArrowsOnSidesBase();
+
+        &.slick-prev {
+
+            border-bottom-right-radius: 36px;
+            border-top-right-radius: 36px;
+
+            @include maxw($mobileBreakpoint) {
+                border-bottom-right-radius: 25px;
+                border-top-right-radius: 25px;
+            }
+        }
+
+        &.slick-next {
+            border-bottom-left-radius: 36px;
+            border-top-left-radius: 36px;
+
+            @include maxw($mobileBreakpoint) {
+                border-bottom-left-radius: 25px;
+                border-top-left-radius: 25px;
+            }
+        }
+
+    }
+}
+
+@mixin slickSliderArrowsSemiTransparentSide() {
+    &:hover {
+        .slick-arrow {
+            opacity: 1;
+        }
+    }
+
+    .slick-arrow {
+        @include slickSliderArrowsOnSidesBase();
+    }
+}
+
+
+@mixin slickSliderArrowsBelowBase() {
+
+    padding-bottom: 50px;
+
+    .slick-arrow {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .slick-prev {
+        transform: translateX(-12px);
+        right: 50%;
+    }
+
+    .slick-next {
+        left: 50%;
+        transform: translateX(12px);
+    }
+
+}
+
+@mixin sliderArrowsBelowThin() {
+    @include slickSliderArrowsBelowBase();
+
+    .slick-arrow {
+        width: 16px;
+        height: 11px;
+    }
+
+    .slick-prev {
+        background-image: url(/images/svg/arrow-left-thin.svg);
+    }
+
+    .slick-next {
+        background-image: url(/images/svg/arrow-right-thin.svg);
+    }
+
+}
+
+//most times better to set fixed height on slide element itself
+@mixin slickSliderFitContent() {
+    @include fitFigurePictureImg();
+    .slick-list,
+    .slick-track,
+    .slick-slide {
+        width: 100%;
+        height: 100%;
+
+
+    }
+
+    .slick-slide > div {
+        height: 100%;
+    }
+}
+
+
+//small blue square boxes next to each other like in solnity
+@mixin sliderArrowsBelowMedium() {
+    @include slickSliderArrowsBelowBase();
+
+    .slick-arrow {
+        @include with-css-background();
+        background-color: $color2;
+        width: 34px;
+        height: 34px;
+    }
+
+    .slick-prev {
+        background-image: url('/images/svg/arrow-left-blue-box.png');
+    }
+
+    .slick-next {
+        background-image: url('/images/svg/arrow-right-blue-box.png');
+    }
+
+
+}
+

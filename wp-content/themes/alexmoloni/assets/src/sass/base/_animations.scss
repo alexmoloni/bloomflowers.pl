@@ -1,0 +1,356 @@
+@keyframes scale {
+    30% {
+        transform: scale(1.4);
+    }
+
+    80% {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@mixin scale() {
+    animation-name: scale;
+    animation-delay: 0s;
+    animation-duration: 0.6s;
+    animation-iteration-count: 2;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes bounceRight {
+    from,
+    20%,
+    53%,
+    80%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, 0, 0);
+    }
+
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(-50px, 0, 0);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(-20px, 0, 0);
+    }
+
+    90% {
+        transform: translate3d(-8px, 0, 0);
+    }
+}
+
+@keyframes bounceDown {
+    from,
+    20%,
+    53%,
+    80%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, 0, 0);
+    }
+
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -30px, 0);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -15px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+@keyframes bounceDownArrow {
+    15% {
+        transform: translateY(-15%);
+    }
+
+    40% {
+        transform: translateY(30%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@mixin bounceDownArrow() {
+    animation-name: bounceDownArrow;
+    animation-delay: 2s;
+    animation-duration: 1.5s;
+    animation-iteration-count: 10;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes bounceLeftArrow {
+    15% {
+        transform: translateX(-10%);
+    }
+
+    60% {
+        transform: translateX(40%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@mixin bounceLeftArrow() {
+    animation-name: bounceLeftArrow;
+    animation-delay: 0.1s;
+    animation-duration: 0.9s;
+    animation-iteration-count: 2;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes bounceInLeft {
+    from,
+    60%,
+    75%,
+    90%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        transform: translate3d(-3000px, 0, 0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(25px, 0, 0);
+    }
+
+    75% {
+        transform: translate3d(-10px, 0, 0);
+    }
+
+    90% {
+        transform: translate3d(5px, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes shine {
+    from {
+        transform: translateX(-100%)
+    }
+    to {
+        transform: translateX(100%)
+    }
+}
+
+@keyframes arrow {
+    30% {
+        transform: translateX(-20%);
+    }
+
+    to {
+        transform: translateX(50%);
+    }
+}
+
+.bounce-right {
+    animation-name: bounceRight;
+    transform-origin: center bottom;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-iteration-count: 3;
+}
+
+@mixin bounceDown() {
+    animation-name: bounceDown;
+    transform-origin: center bottom;
+    animation-duration: 2s;
+    animation-delay: 7s;
+    animation-iteration-count: 2;
+}
+
+.bounce-down {
+    @include bounceDown();
+}
+
+.bounceInLeft {
+    animation-name: bounceInLeft;
+    transform-origin: center bottom;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@mixin bounceInLeft() {
+    animation-name: bounceInLeft;
+    transform-origin: center bottom;
+    animation-duration: 2s;
+}
+
+@keyframes rotate-center {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@mixin rotate-center() {
+    animation: rotate-center 0.6s ease-in-out both;
+}
+
+@keyframes rotate-center-slow {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@mixin rotate-center-slow() {
+    animation: rotate-center-slow 0.8s ease-in-out both;
+}
+
+@mixin animateVisibility() {
+    visibility: hidden;
+    transition: opacity 250ms ease-in-out, visibility 30ms ease-in-out 260ms, z-index 0.5s 260ms;
+
+    &.-visible {
+        visibility: visible;
+        opacity: 0.67;
+        transition: visibility 30ms, z-index 0.5s 30ms, opacity 0.5s 30ms;
+    }
+}
+
+
+@mixin rotateCircle() {
+    animation-name: rotateCircle;
+    transform-origin: center;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+
+@keyframes rotateCircle {
+
+    0% {
+    }
+
+    15% {
+        transform:  rotate(360deg * 0.2) scale(0.7);
+    }
+
+    25% {
+        transform:  rotate(360deg * 0.32) scale(0.55);
+    }
+
+
+    50% {
+        transform:  rotate(360deg * 0.5) scale(0.5);
+    }
+
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@mixin rotateCircleInitial() {
+    animation-name: rotateCircleInitial;
+    transform-origin: center;
+    animation-duration: 8s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 4;
+}
+
+@keyframes rotateCircleInitial {
+
+    0% {
+    }
+
+    3% {
+        transform:  rotate(360deg * 0.2) scale(0.7);
+    }
+
+    5% {
+        transform:  rotate(360deg * 0.32) scale(0.55);
+    }
+
+
+    10% {
+        transform:  rotate(360deg * 0.5) scale(0.5);
+    }
+
+
+    20% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+@mixin animationPulse() {
+    animation-name: pulse;
+    transform-origin: center;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-delay: 0s;
+    animation-fill-mode: both;
+    animation-iteration-count: 3;
+}
+
+
+
+%animation-fade-in-base {
+    opacity: 0.1;
+    transition: opacity 0.4s, transform 0.2s ;
+
+    &.animation-active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animation-fade-in-right {
+    @extend %animation-fade-in-base;
+    transform: translateX(90%);
+
+}
+
+.animation-fade-in-left {
+    @extend %animation-fade-in-base;
+    transform: translateX(-90%);
+
+}

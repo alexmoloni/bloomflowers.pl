@@ -1,0 +1,15 @@
+.am-newsletter-signup {
+    @include basicPadding(top, 60);
+
+    .heading {
+        @include basicFontSize(22);
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    form {
+        @include basicNewsletterSignupForm();
+        padding: 0 !important;
+
+    }
+}

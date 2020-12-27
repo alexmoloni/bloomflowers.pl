@@ -1,0 +1,196 @@
+%cols-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+//basic layout 2 columns
+@mixin flex-2-cols($br: $mobileBreakpoint) {
+    @extend %cols-wrap;
+
+    @include maxw($br) {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    > *:first-child {
+        margin-right: 40px;
+
+        @include maxw($br) {
+            margin-right: 0;
+            margin-bottom: 40px;
+        }
+    }
+}
+
+@mixin flexEqualColsSpaceBetween($number_cols, $col_gutter) {
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+        //for older browsers
+        $fxb: #{percentage(1/$number_cols) - 2%};
+        flex: 0 0 $fxb;
+        $fx_perc: #{percentage(1/$number_cols)};
+        flex: 0 0 calc(#{$fx_perc} - #{$col_gutter * (($number_cols - 1)/$number_cols)+ 0px});
+
+    }
+}
+
+//layout for 2 columns
+@mixin cols-wrap-50-50($br: 1000px) {
+    @extend %cols-wrap;
+    align-items: stretch;
+    > .column {
+        flex: 0 0 50%;
+    }
+
+    @include maxw($br) {
+        flex-direction: column;
+
+        > .column {
+            flex-basis: auto;
+        }
+    }
+}
+
+.-flex-cols-wrap-50-50 {
+    @include cols-wrap-50-50();
+}
+
+//example usage:
+//@include flex-cols-auto(auto); - columns will not wrap
+//@include flex-cols-auto(220px, 70px, 30px); - 220px columns; 70 column gap; 30px row gap
+@mixin flex-cols-auto($col-width: null, $col-gap: null, $row-gap: null) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    @if ($col-gap) {
+        margin-left: -#{$col-gap};
+    }
+    @if ($row-gap) {
+        margin-bottom: -#{$row-gap};
+    }
+    overflow: hidden;
+
+    > * {
+        flex: 0 0 $col-width;
+        @if ($col-gap) {
+            margin-left: $col-gap;
+        }
+        @if ($row-gap) {
+            margin-bottom: $row-gap;
+        }
+    }
+}
+
+.-flex-cols-auto {
+    @include flex-cols-auto();
+}
+
+//use if you want to specify a breakpoint from which we go into 1 column layout
+@mixin flex-cols-manual($br: $mobileBreakpoint, $col-width: null, $col-gap: null, $row-gap: null) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    @if ($col-gap) {
+        margin-left: -#{$col-gap};
+    }
+    @if ($row-gap) {
+        margin-bottom: -#{$row-gap};
+    }
+    overflow: hidden;
+
+    > * {
+        flex: 0 0 $col-width;
+        @if ($col-gap) {
+            margin-left: $col-gap;
+        }
+        @if ($row-gap) {
+            margin-bottom: $row-gap;
+        }
+    }
+
+    @include maxw($br) {
+        flex-direction: column;
+        margin-left: 0;
+
+        > * {
+            flex: 1;
+            margin-left: 0;
+        }
+    }
+}
+
+@mixin fxRow() {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    justify-content: space-between;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+$gutter: 15px;
+@mixin fxCol($col) {
+    $percent: percentage($col/12);
+    width: calc(#{$percent} - #{$gutter});
+}
+
+@mixin fxCol12() {
+    width: 100%;
+}
+
+@mixin fxCol6() {
+    @include fxCol(6);
+}
+
+@mixin fxColMd6() {
+    @include fxCol(6);
+
+    @include maxw($mobileBreakpoint) {
+        @include fxCol12();
+    }
+}
+
+@mixin fxColMd4() {
+    @include fxCol(4);
+
+    @include maxw($mobileBreakpoint) {
+        @include fxCol12();
+    }
+}
+
+@mixin fxColSm6() {
+    @include fxCol(6);
+
+    @include maxw($br-xs) {
+        @include fxCol12();
+    }
+}
+
+@mixin fxCol4() {
+    @include fxCol(4);
+}
+
+.fx-row {
+    @include fxRow();
+}
+
+.fx-col-6 {
+    @include fxCol6();
+}
+
+.fx-col-md-6 {
+    @include fxColMd6();
+}
+
+.fx-col-4 {
+    @include fxCol4();
+}
+
+.fx-col-md-4 {
+    @include fxColMd4();
+}

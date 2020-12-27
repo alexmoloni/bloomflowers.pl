@@ -1,0 +1,70 @@
+header.main-header {
+    top: 0;
+    left: auto;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+
+
+    &.has-shadow {
+        @include headerShadowAndBorder();
+    }
+
+    @include maxw($brMobileMenu) {
+        //@include admin-sticky-fix();
+        background-color: #fff;
+        width: 100%;
+        position: relative;
+        z-index: 102;
+    }
+
+    &.sticky {
+        position: fixed;
+        z-index: 300;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+    }
+
+    &.sticky-on-load-on-content {
+        background-color: transparent;
+    }
+
+    &.sticky-on-load-scrolled-down {
+        background-color: #fff;
+    }
+
+    > .content {
+        @include maxw($brMobileMenu) {
+        }
+    }
+
+    .header-inner-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+
+
+        @include maxw($brMobileMenu) {
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .main-logo {
+        margin-right: 50px;
+        display: flex;
+
+        @include maxw($brMobileMenu) {
+            margin-right: 0;
+        }
+
+    }
+
+}
+
+
+
+
+
+

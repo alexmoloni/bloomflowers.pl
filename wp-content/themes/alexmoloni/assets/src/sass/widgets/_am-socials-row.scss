@@ -1,0 +1,30 @@
+.am-socials-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .item {
+        @include basicMargin(right, 20);
+        display: flex;
+
+        &:last-child {
+            @include basicMargin(right, 0);
+        }
+        a {
+            display: flex;
+            @include basicHeight(20);
+            @include basicTransition();
+
+
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+
+        a:hover {
+            @include basicLighten();
+
+        }
+    }
+}

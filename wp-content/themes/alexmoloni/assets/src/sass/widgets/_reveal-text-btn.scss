@@ -1,0 +1,26 @@
+.reveal-text-btn {
+
+
+    .icon {
+        width: toVw(15);
+        height: toVw(15);
+        @include fitFigurePictureImg();
+        margin-right: toVw(8);
+
+        @include maxw($br-l) {
+            width: 15px;
+            height: 15px;
+        }
+
+        @include maxw($mobileBreakpoint) {
+            margin-right: 8px;
+        }
+
+        path {
+            @include basicTransition();
+        }
+    }
+}
+
+.reveal-text-btn:hover {
+}

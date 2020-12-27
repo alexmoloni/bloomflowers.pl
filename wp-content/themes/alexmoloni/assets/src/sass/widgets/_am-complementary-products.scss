@@ -1,0 +1,83 @@
+.am-complementary-products {
+    .items-wrap {
+        @include basicGrid();
+        grid-template-columns: repeat(auto-fit, minmax(110px, toVw(110)));
+        @include basicVwProperty(grid-row-gap, 10);
+        @include basicVwProperty(grid-column-gap, 10);
+
+        @include maxw(1200px) {
+            grid-template-columns: repeat(auto-fit, minmax(110px, 130px));
+        }
+
+        @include maxw($mobileBreakpoint) {
+            grid-template-columns: repeat(auto-fit, 120px);
+        }
+
+        @include maxw($br-xs) {
+            grid-template-columns: repeat(auto-fit, 100px);
+        }
+    }
+
+    .comp-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        @include basicPaddingBottom(20);
+
+        figure  {
+            width: 100%;
+            @include basicHeight(115);
+            border: 1px solid $colorBorders;
+            @include basicMarginBottom(3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 80%;
+                height: 80%;
+                object-position: center;
+                object-fit: cover;
+            }
+
+        }
+
+        label {
+            text-align: center;
+            width: 100%;
+            @include basicTransition();
+            cursor: pointer;
+
+        }
+
+        .comp-title {
+            @include basicMarginBottom(10);
+            @include basicFontSize(14);
+            color: $colorGrey1;
+        }
+
+        .comp-price {
+            font-weight: bold;
+            @include basicFontSize(14);
+            @include basicMarginBottom(7);
+        }
+
+        .comp-input {
+            order: 2;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            cursor: pointer;
+        }
+
+        .comp-input:checked + label {
+            background-color: $color2b;
+        }
+    }
+
+
+
+
+}

@@ -1,0 +1,41 @@
+@include maxw($brMobileMenu) {
+    header.main-header {
+        $menu_item_underline_color: $color2;
+        $menu_item_underline_height: 5px;
+
+        .main-navigation {
+            .menu-item {
+                margin-right: 0;
+                margin-bottom: 30px;
+                display: block;
+                width: 100%;
+
+                &:after {
+                    display: none;
+                }
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                a {
+                    padding: 9px 20px;
+                    display: inline-block;
+                    color: $color1;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    font-weight: 400;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+
+}

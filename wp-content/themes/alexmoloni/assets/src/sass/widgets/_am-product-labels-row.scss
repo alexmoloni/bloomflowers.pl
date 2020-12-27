@@ -1,0 +1,30 @@
+.am-product-labels-row {
+    display: flex;
+    align-items: center;
+
+    .label {
+        color: #fff;
+        @include basicVwProperty(border-radius, 10);
+        text-transform: uppercase;
+        font-family: $font1;
+        font-weight: 300;
+        @include basicFontSize(13);
+        @include basicPaddingTopBottom(4);
+        @include basicPaddingLeftRight(8);
+        @include basicMargin(right, 10);
+
+        &:last-child {
+            @include basicMargin(right, 0);
+        }
+
+
+    }
+
+    .label.recommended {
+        background-color: $color3;
+    }
+
+    .label.new {
+        background-color: $color4;
+    }
+}

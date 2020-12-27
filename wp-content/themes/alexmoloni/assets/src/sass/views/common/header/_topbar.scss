@@ -1,0 +1,67 @@
+header.main-header {
+
+    .topbar {
+        @include basicPaddingTopBottom(8);
+        background-color: $colorGrey2;
+        font-family: $font1;
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .inner-wrap {
+                display: flex;
+                align-items: center;
+
+                a {
+                    color: $color1;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                img {
+                    @include basicHeight(20);
+                    width: auto;
+                    @include basicMargin(right, 10);
+                }
+
+            }
+
+            .phone-wrap {
+                .phone-text {
+                    @include basicMargin(left, 12);
+                    color: $color2;
+                    font-weight: 500;
+                }
+            }
+
+            .cart-wrap {
+                position: relative;
+                color: $color2;
+                font-weight: 500;
+                .cart-total-circle-icon {
+                    @include basicWidth(15);
+                    @include basicHeight(15);
+                    border-radius: 50%;
+                    background-color: $color2;
+                    color: #fff;
+                    @include basicFontSize(12);
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    left: -10%;
+                    top: -10%;
+
+                    &.animated {
+                        @include animationPulse();
+                    }
+                }
+            }
+        }
+    }
+}

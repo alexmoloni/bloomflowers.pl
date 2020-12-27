@@ -1,0 +1,15 @@
+.main-logo.text-to-right {
+    display: flex;
+    align-items: center;
+
+    a {
+        cursor: pointer;
+    }
+
+    .text-to-right {
+        @include basicMargin(left, 35);
+        font-family: $font1;
+        @include basicFontSize(12);
+        color: $color2;
+    }
+}

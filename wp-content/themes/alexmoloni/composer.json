@@ -1,0 +1,10 @@
+{
+    "require": {
+        "automattic/woocommerce": "^2.0"
+    },
+    "autoload": {
+        "classmap": [
+            "inc/Classes/"
+        ]
+    }
+}

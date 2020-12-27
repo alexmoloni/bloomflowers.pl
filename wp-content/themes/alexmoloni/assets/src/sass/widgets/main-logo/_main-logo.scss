@@ -1,0 +1,16 @@
+.main-logo {
+    .logo {
+        @include with-css-background();
+        display: flex;
+        @include basicVwProperty(width, 122);
+        height: auto;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-position: center;
+            object-fit: contain;
+        }
+
+    }
+}

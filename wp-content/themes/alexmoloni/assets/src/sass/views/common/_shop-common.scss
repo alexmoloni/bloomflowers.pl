@@ -1,0 +1,108 @@
+body.woocommerce-page {
+
+    main.main {
+        > .woocommerce {
+            @include container();
+
+            h2 {
+                @include heading2();
+            }
+
+            h3 {
+                @include heading3();
+            }
+
+            h4 {
+                @include heading4();
+            }
+        }
+    }
+
+    .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt {
+        background-color: $color2;
+        border: 3px solid $color2;
+
+        &:hover {
+            background-color: #fff;
+            color: $color2;
+        }
+    }
+
+
+    tr ul > li {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 18px;
+
+        @include maxw(500px) {
+            flex-wrap: wrap;
+        }
+
+        input, label {
+            cursor: pointer;
+            margin-top: 0 !important;
+            white-space: nowrap;
+        }
+    }
+
+    .extra-info {
+        @include basicFontSize(12);
+        color: $colorGrey1;
+        @include basicMarginLeft(10);
+
+    }
+
+    .woocommerce ul#shipping_method li {
+        margin-bottom: 18px;
+    }
+
+    tr .coupon {
+        display: flex;
+
+        .input-text {
+            width: 120px;
+        }
+    }
+
+    .woocommerce form {
+        label.checkbox {
+            cursor: pointer;
+        }
+
+        .input-checkbox {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: white;
+            position: relative;
+            border: 1px solid $colorGrey1;
+
+            &:after {
+                @include blockAfterorBefore();
+            }
+
+            &:checked {
+                &::after {
+                    content: '✓'; /* or '\2713', or '\2714' */
+                    text-align: center;
+                    vertical-align: middle;
+                    position: absolute;
+                    height: 1em;
+                    width: 1em;
+                    line-height: 1;
+                    margin: auto;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    color: $color2;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+
+}
+

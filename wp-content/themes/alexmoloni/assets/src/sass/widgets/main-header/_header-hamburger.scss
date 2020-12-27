@@ -1,0 +1,41 @@
+header.main-header {
+
+    .hamburger {
+        display: none;
+        @include basicTransition();
+
+
+        @include maxw($brMobileMenu) {
+            display: block;
+        }
+    }
+
+    &.hamburger-location-right {
+        .header-inner-wrap {
+
+            @include maxw($brMobileMenu) {
+
+                //change order og items when on mobile
+                > .logo {
+                    order: 1;
+                }
+
+                > .start-your-project {
+                    order: 2;
+                }
+
+                > .hamburger {
+                    order: 3;
+                }
+
+                > .language-switcher {
+                    order: 5;
+                }
+
+            }
+        }
+    }
+}
+
+
+

@@ -1,0 +1,12 @@
+header.main-header {
+    .close-x {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+
+        &:hover {
+            @include rotate-center-slow();
+        }
+    }
+}
+

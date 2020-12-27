@@ -1,0 +1,46 @@
+footer#footer {
+    $grey: #c8c7c7;
+
+    .footer-row-2 {
+        background-color: $color1;
+        color: $grey;
+        font-family: $font1;
+        position: relative;
+
+        .cols-wrap {
+            @include basicGrid();
+            grid-template-columns: repeat(auto-fit, minmax(270px, 25fr));
+            @include basicVwProperty(grid-row-gap, 25);
+            @include basicVwProperty(grid-column-gap, 25);
+            align-items: flex-start;
+
+            .link-item {
+                @include basicMargin(bottom, 4);
+                display: flex;
+
+                a {
+                    color: $grey;
+                }
+            }
+        }
+
+        .logo-wrap {
+            position: absolute;
+            bottom: 23%;
+            right: 5%;
+            display: flex;
+            justify-content: flex-start;
+
+            @include maxw($br-xs) {
+                position: static;
+                @include basicMargin(top, 30);
+            }
+
+            img {
+                @include basicWidth(150);
+            }
+
+
+        }
+    }
+}

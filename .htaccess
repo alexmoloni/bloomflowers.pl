@@ -1,0 +1,42 @@
+#Alias to images
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^images/(.*) /wp-content/themes/alexmoloni/assets/images/$1 [L]
+</IfModule>
+
+#Alias to documents (ex PDFs)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^docs/(.*) /wp-content/themes/alexmoloni/assets/docs/$1 [L]
+</IfModule>
+
+#Alias to fonts
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^fonts/(.*) /wp-content/themes/alexmoloni/assets/fonts/$1 [L]
+</IfModule>
+
+#Alias to videos
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^videos/(.*) /wp-content/themes/alexmoloni/assets/videos/$1 [L]
+</IfModule>
+
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# BEGIN WordPress
+# Dyrektywy zawarte między "BEGIN WordPress" oraz "END WordPress"
+# są generowane dynamicznie i powinny być modyfikowane tylko za pomocą
+# filtrów WordPressa. Zmiany dokonane bezpośrednio tutaj będą nadpisywane.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress

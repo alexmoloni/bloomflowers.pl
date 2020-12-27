@@ -1,0 +1,8 @@
+.section {
+    @include basicPaddingTopBottom(30);
+
+    .heading-2 {
+        color: $color2;
+    }
+
+}

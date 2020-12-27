@@ -1,0 +1,44 @@
+.am-cart-btn {
+    --loader-color: #fff;
+    position: relative;
+    overflow: hidden;
+
+    &.is-buy-now-btn {
+        --loader-color: #{$color2};
+    }
+
+    .btn {
+        @include basicTransition();
+
+        &.loading {
+            opacity: 0.5;
+        }
+
+        .am-loader {
+            right: 38%;
+        }
+    }
+
+    .btn-show-cart {
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+        @include basicTransition();
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    &.item-added-to-cart {
+        .btn-add-to-cart {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .btn-show-cart {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}

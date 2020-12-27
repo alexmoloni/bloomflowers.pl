@@ -1,0 +1,10 @@
+.main-header.with-language-switcher {
+    .am-language-switcher {
+        @include basicMargin(left, 30);
+
+        @include maxw($mobileBreakpoint) {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}

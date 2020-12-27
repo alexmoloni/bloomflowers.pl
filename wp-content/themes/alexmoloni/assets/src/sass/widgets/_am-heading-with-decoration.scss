@@ -1,0 +1,35 @@
+.am-heading-with-decoration {
+    text-align: center;
+
+    .inner-wrap {
+        display: inline-block;
+    }
+    .text {
+        margin-bottom: 18px;
+    }
+
+    .decoration {
+        width: 5px;
+        height: 5px;
+        background-color: $color2;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .decoration:before,
+    .decoration:after {
+        @include blockAfterorBefore();
+        height: toVw(1);
+        background-color: $color2;
+        width: toVw(102);
+        min-height: 1px;
+    }
+
+    .decoration:before {
+        margin-right: toVw(21);
+    }
+
+    .decoration:after {
+        margin-left: toVw(21);
+    }
+}

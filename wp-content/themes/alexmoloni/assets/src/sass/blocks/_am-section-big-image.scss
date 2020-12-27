@@ -1,0 +1,67 @@
+.am-section-big-image {
+    .slides-wrap {
+
+        .slide {
+            display: block;
+            @include basicHeight(500);
+            @include fitFigurePictureImg();
+            position: relative;
+            overflow: hidden;
+
+            &.with-text-on-image {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                figure {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    @include fitFigurePictureImg();
+                }
+
+                .texts-wrap {
+                    position: relative;
+                    text-align: center;
+                    padding: 0 20px;
+
+                    .text-bottom {
+                        font-weight: bold;
+                        @include basicMargin(bottom, 50);
+
+                    }
+
+                    .btn {
+
+                    }
+                }
+            }
+
+            &.image-with-filter {
+                figure {
+                    filter: saturate(90%) opacity(70%);
+                }
+            }
+        }
+
+    }
+
+    &.with-slider {
+        .slides-wrap {
+
+            @include slickSliderHideUntilLoaded();
+            @include slickFixSlidDivVerticalAlign();
+            @include slickSliderArrowsSemiTransparentCircled();
+
+        }
+    }
+
+    &.no-slider {
+        .slide {
+
+
+        }
+    }
+}

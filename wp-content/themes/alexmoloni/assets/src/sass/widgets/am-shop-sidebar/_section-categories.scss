@@ -1,0 +1,51 @@
+.am-shop-sidebar {
+
+    .section-categories {
+        @include basicMarginBottom(30);
+
+        .categories-list {
+
+            .category-item {
+                @include basicFontSize(14);
+                display: flex;
+                align-items: center;
+                text-transform: uppercase;
+
+
+                &:before {
+                    @include blockAfterorBefore();
+                    position: absolute;
+                    opacity: 0;
+                    left: 0;
+                    top: 0;
+                    height: 100%;
+                    @include basicWidth(4);
+                    background-color: $color2;
+                    @include basicTransition();
+                }
+
+                a {
+                    color: $color1;
+                }
+
+            }
+
+            .category-item.selected,
+            .category-item:hover {
+                background-color: #fff;
+
+                a {
+                    text-decoration: none;
+                    color: $color2;
+                }
+
+                &:before {
+                    opacity: 1;
+
+                }
+            }
+
+
+        }
+    }
+}

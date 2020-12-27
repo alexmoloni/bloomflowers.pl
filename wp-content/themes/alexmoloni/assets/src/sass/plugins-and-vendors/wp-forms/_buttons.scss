@@ -1,0 +1,12 @@
+div.wpforms-container {
+    .wpforms-form .wpforms-submit-container {
+        input[type=submit],
+        button[type=submit],
+        .wpforms-page-button {
+            @include btn-cta-1();
+        }
+
+    }
+
+}
+

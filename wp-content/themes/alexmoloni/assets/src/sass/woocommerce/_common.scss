@@ -1,0 +1,35 @@
+.woocommerce-page {
+    .am-nip-field {
+        label.checkbox {
+            @include basicFontSize(20);
+        }
+
+        span.optional {
+            display: none;
+        }
+    }
+
+    #ship-to-different-address label {
+        @include basicFontSize(20);
+    }
+
+    .header-main-footer-wrap main.main {
+        @include basicPaddingTop(60);
+    }
+}
+
+body.woocommerce.archive {
+    main.main {
+        padding-top: 0 !important;
+    }
+}
+
+.woocommerce #content table.cart .product-thumbnail, .woocommerce table.cart .product-thumbnail, .woocommerce-page #content table.cart .product-thumbnail, .woocommerce-page table.cart .product-thumbnail {
+    @include maxw(768px) {
+        display: block;
+
+        &:before {
+            display: none;
+        }
+    }
+}

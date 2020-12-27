@@ -1,0 +1,62 @@
+.popup-wrap {
+    position: relative;
+}
+
+.popup-close-x-wrap {
+
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+    cursor: pointer;
+    border-radius: 50%;
+    //box-shadow: 1px 1px 4px 1px #6f6f6f;
+    background-color: $colorGrey2;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-close-x {
+    width: 25px;
+    height: 25px;
+    position: relative;
+}
+
+.popup-close-x::before, .popup-close-x::after {
+    border-radius: 6px;
+}
+
+.popup-close-x::before, .popup-close-x::after {
+    content: '';
+    height: 4px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #fff;
+    display: block;
+    position: absolute;
+    transition: all 0.3s;
+}
+
+.popup-close-x::after {
+    transform: rotate(-45deg);
+}
+
+.popup-close-x::before {
+    transform: rotate(45deg);
+}
+
+.popup-close-x-wrap:hover {
+    .popup-close-x::before, .popup-close-x::after {
+        //background: #272727;
+    }
+
+}
+
+.grecaptcha-badge {
+    display: none!important;
+}

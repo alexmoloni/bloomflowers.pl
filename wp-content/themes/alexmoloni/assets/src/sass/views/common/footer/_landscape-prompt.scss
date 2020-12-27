@@ -1,0 +1,34 @@
+.landscape-prompt {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20000;
+    background-color: #fff;
+
+    @media (max-width: 500px) and (orientation: landscape) {
+        display: block;
+    }
+
+    .inner-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: 130px;
+            height: auto;
+            margin-bottom: 50px;
+        }
+
+        .text {
+            font-size: 18px;
+            text-align: center;
+        }
+    }
+}

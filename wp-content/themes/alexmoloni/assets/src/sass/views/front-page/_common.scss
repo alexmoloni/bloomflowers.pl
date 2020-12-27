@@ -1,0 +1,15 @@
+body.home {
+    .am-icons-row {
+        @include basicFontSize(13.5);
+    }
+
+    .am-products-grid {
+        .products-wrap {
+            grid-template-columns: repeat(auto-fit, minmax(toVw(230), 25fr));
+
+            @include maxw($mobileBreakpoint) {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 25fr));
+            }
+        }
+    }
+}

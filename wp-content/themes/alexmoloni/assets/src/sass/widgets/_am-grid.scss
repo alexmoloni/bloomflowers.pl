@@ -1,0 +1,295 @@
+.am-grid {
+    @supports (display: grid) {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    @include maxw($mobileBreakpoint) {
+        //grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    &.columns-per-row-3 {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+    }
+
+    &.border-on-hover {
+
+        .grid-item {
+            border: 1px solid transparent;
+            @include basicTransition();
+
+            &:hover {
+                border-color: $colorGrey3;
+            }
+        }
+    }
+
+    &.with-gutter {
+        grid-column-gap: toVw(30);
+        grid-row-gap: toVw(30);
+
+        @include maxw($br-l) {
+            grid-column-gap: 30px;
+            grid-row-gap: 30px;
+        }
+
+        @include maxw($br-xs) {
+            grid-column-gap: 20px;
+            grid-row-gap: 20px;
+        }
+
+        &.gutter-small {
+            grid-column-gap: toVw(20);
+            grid-row-gap: toVw(20);
+
+            @include maxw($br-l) {
+                grid-column-gap: 20px;
+                grid-row-gap: 20px;
+            }
+
+            @include maxw($br-xs) {
+                grid-column-gap: 15px;
+                grid-row-gap: 15px;
+            }
+        }
+    }
+
+    &.black-and-white {
+        figure {
+            @include basicBlackAndWhite();
+        }
+    }
+
+    &.image-size-small {
+        .grid-item {
+            .image-wrap {
+                height: toVw(160);
+                @include maxw($br-l) {
+                    height: 160px;
+                }
+            }
+        }
+
+
+    }
+
+    &.image-size-big {
+        grid-template-columns: repeat(2, minmax(220px, 1fr) );
+
+        @include maxw($mobileBreakpoint) {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr) );
+        }
+
+        .grid-item {
+            .image-wrap {
+                height: toVw(250);
+                @include maxw($br-l) {
+                    height: 250px;
+                }
+
+                img {
+                    object-position: center top;
+                }
+            }
+        }
+
+    }
+
+    &.text-on-image-top-left {
+        .grid-item {
+            .text-on-image {
+                @include heading2();
+                bottom: auto;
+                top: toVw(20);
+            }
+        }
+    }
+
+    &.text-on-image-bottom-right {
+        .grid-item {
+            .text-on-image {
+                left: auto;
+                right: toVw(20);
+
+                @include maxw($br-l) {
+                    right: 20px;
+                }
+            }
+        }
+    }
+
+    &.arrow-on-image {
+        .grid-item {
+            .text-on-image {
+                svg {
+                    @include basicMargin(left, 0);
+                }
+            }
+        }
+
+        .grid-item:hover {
+            .cta-btn {
+                svg {
+                    transform: translateX(25%);
+                }
+            }
+        }
+    }
+
+
+    .grid-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        .image-wrap {
+            @include fitFigurePictureImg();
+            position: relative;
+            display: block;
+            height: toVw(245);
+
+            @include maxw($br-l) {
+                height: 245px;
+            }
+        }
+
+        .text-on-image {
+            color: #fff;
+            position: absolute;
+            left: toVw(20);
+            bottom: toVw(20);
+            font-family: $headingsFont;
+            font-size: toVw(16);
+            font-weight: normal;
+
+            @include maxw($br-l) {
+                font-size: 16px;
+                left: 20px;
+                bottom: 20px;
+            }
+
+            @include maxw($br-xs) {
+                left: 15px;
+                bottom: 15px;
+            }
+
+            .cta-btn {
+                svg {
+                    @include basicTransition();
+
+                    .a {
+                        stroke: #fff;
+                    }
+                }
+
+                &:hover {
+                    opacity: inherit !important;
+                }
+            }
+        }
+
+        .item-content-wrap {
+            padding: toVw(20);
+            background-color: #fff;
+            border: 1px solid $colorBorders;
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+
+            @include maxw($br-l) {
+                padding: 20px;
+            }
+
+            @include maxw($br-xs) {
+                padding: 17px;
+            }
+
+            .heading {
+                margin-bottom: toVw(15);
+
+                @include maxw($br-l) {
+                    margin-bottom: 15px;
+                }
+            }
+
+            .text {
+                font-weight: 300;
+                font-size: toVw(14);
+                line-height: 1.43;
+
+                @include minw($br-xl) {
+                    font-size: 0.9vw;
+                }
+
+                @include maxw($br-l) {
+                    font-size: 14px;
+                }
+            }
+        }
+
+    }
+
+    .grid-item:hover {
+        .cta-btn {
+            svg {
+                transform: translateX(50%);
+            }
+        }
+    }
+
+    .grid-item.content-big {
+        .item-content-wrap {
+            padding: toVw(30);
+
+            @include maxw($br-l) {
+                padding: 30px;
+            }
+
+            @include maxw($br-xs) {
+                padding: 22px;
+            }
+
+            .text {
+                font-size: inherit;
+            }
+        }
+    }
+
+    .grid-item.with-content-logos {
+        .item-content-wrap {
+            .text {
+                @include basicMargin(bottom, 28);
+            }
+
+            .logos-wrap {
+                margin-top: auto;
+                display: flex;
+                align-items: center;
+
+                a {
+                    height: toVw(12);
+                    margin-right: toVw(14);
+                    display: flex;
+
+                    @include maxw($br-l) {
+                        height: 12px;
+                        margin-right: 14px;
+                    }
+
+                    img {
+                        height: 100%;
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    .grid-item.no-link {
+        .image-wrap {
+            cursor: inherit;
+        }
+    }
+
+
+}

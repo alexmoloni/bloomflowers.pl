@@ -1,0 +1,81 @@
+@mixin ctaBtn() {
+    font-size: $cta-btn-fsz-desktop;
+    text-transform: $cta-btn-tt;
+    padding-left: $cta-btn-p-horizontal;
+    padding-right: $cta-btn-p-horizontal;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: $cta-btn-h;
+    border-radius: $cta-btn-rd;
+    @include basicTransition();
+    background-color: $cta-btn-bgc;
+    color: $cta-btn-c;
+    font-weight: $cta-btn-fw;
+    width: $cta-btn-width;
+
+    @include maxw($mobileBreakpoint) {
+        font-size: $cta-btn-fsz-mobile;
+        height: $cta-btn-h-mobile;
+        width: auto;
+    }
+
+    &:hover {
+        background-color: $cta-btn-bgc-hover;
+        color: $cta-btn-c-hover;
+        text-decoration: $cta-btn-td-hover;
+
+    }
+}
+
+@mixin ctaBtnWithArrowRightAsCssBg() {
+    padding-right: #{25 + 8 + 8}px; //25px normal padding + 16px for arrow
+    @include with-css-background();
+    background-size: $arrow-right-w $arrow-right-h;
+    background-image: $arrow-right-bgi;
+    background-position: calc(100% - 18px) 50%;
+}
+
+
+
+.cta-btn {
+    @include ctaBtn();
+}
+
+.cta-btn.with-border {
+    border: $cta-btn-bd 1px solid;
+}
+
+@mixin ctaBtnWithArrowRightInAfter() {
+    &:after {
+        @include blockAfterorBefore();
+        @include with-css-background();
+        width: $arrow-right-w;
+        height: $arrow-right-h;
+        margin-left: $arrow-right-ml;
+        background-image: $arrow-right-bgi;
+    }
+}
+
+.cta-btn.with-arrow-right {
+    @include ctaBtnWithArrowRightInAfter();
+}
+
+.cta-btn.-theme-plain {
+    background: none;
+    width: auto;
+    height: auto;
+    padding: 0;
+    color: $color1;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:after {
+        background-image: url('/images/prod/arrows/arrow-right-medium-blue.svg');
+    }
+}
+
+

@@ -1,0 +1,35 @@
+main section {
+    ul {
+        font-size: inherit;
+        line-height: 1.5;
+        text-align: left;
+        color: $color1;
+        list-style-type: disc;
+        list-style-position: inside;
+        margin-bottom: toVw(20);
+
+        @include maxw($br-l) {
+            margin-bottom: 20px;
+        }
+
+        @include maxw($br-sm) {
+            font-size: 14px;
+        }
+
+        li {
+            position: relative;
+            margin-bottom: 0.6em;
+
+            &::marker {
+                margin-right: 5px;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+        }
+
+    }
+
+}

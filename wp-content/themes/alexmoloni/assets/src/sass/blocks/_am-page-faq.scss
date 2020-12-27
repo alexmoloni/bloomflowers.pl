@@ -1,0 +1,10 @@
+.am-page-faq {
+    .section-1 {
+        @include basicPaddingTop(60);
+
+        .page-title {
+            @include basicMarginBottom(70);
+            text-align: center;
+        }
+    }
+}

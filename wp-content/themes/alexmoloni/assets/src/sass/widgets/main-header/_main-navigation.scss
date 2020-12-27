@@ -1,0 +1,80 @@
+header.main-header {
+
+    .main-navigation {
+        //z-index above shadow overlay
+        transition: 0.5s all;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        z-index: 100;
+
+        .close-x {
+            display: none;
+        }
+
+        //in order for underline to work on all widths
+        .desktop-menu-wrap {
+            display: flex;
+            align-items: stretch;
+
+            .menu-header-menu-container {
+                display: flex;
+                align-items: stretch;
+
+                .menu-item {
+                    display: flex;
+                    align-self: stretch;
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                }
+            }
+        }
+
+        .mobile-menu-wrap {
+            display: none;
+        }
+
+        .mobile-menu-header {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        ul.header-menu {
+            @include minw($brMobileMenu) {
+                display: flex;
+            }
+        }
+
+        ul.header-menu-mobile {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}
+
+
+/*styles for when header becomes sticky*/
+header.main-header.sticky {
+
+    .main-navigation {
+        @include minw($brMobileMenu) {
+        }
+
+        a.btn-main {
+            display: inline-flex;
+        }
+    }
+}
+
+header.main-header #overlay-shadow {
+    @include minw($brMobileMenu) {
+        display: none;
+    }
+}
+

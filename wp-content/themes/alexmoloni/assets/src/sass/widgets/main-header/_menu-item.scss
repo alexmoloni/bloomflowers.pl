@@ -1,0 +1,158 @@
+header.main-header {
+    $menu_item_underline_color: $color2;
+    $menu_item_underline_height: 3px;
+
+
+    .main-navigation {
+        .menu-item {
+            position: relative;
+            transition: all 0.2s;
+            @include basicMargin(right, 40);
+            text-align: left;
+
+
+            &:hover a {
+                text-decoration: none;
+            }
+
+
+            &:last-of-type {
+                @include basicMargin(right, 0);
+            }
+
+            &.current-menu-item {
+                a {
+                    font-weight: bold;
+                }
+            }
+
+            a {
+                font-size: toVw(15);
+                font-family: $font1;
+                @include basicPaddingTopBottom(4);
+                @include basicPaddingLeftRight(2);
+                white-space: nowrap;
+                display: block;
+                position: relative;
+                transition: all 0.2s;
+                text-transform: none;
+                color: $color1;
+                font-weight: 600;
+
+                @include maxw($br-l) {
+                    font-size: 15px;
+                }
+
+            }
+
+        }
+
+        .menu-item.menu-item-shop {
+            > a {
+                &:before {
+                    content: "";
+                    border-left: 3px solid rgba(0,0,0,0);
+                    border-right: 3px solid rgba(0,0,0,0);
+                    border-top: 5px solid $color2;
+                    position: absolute;
+                    right: 0;
+                    top: -4px;
+
+                    @include maxw($mobileBreakpoint) {
+                        display: none;
+                    }
+                }
+
+                &:after {
+                    position: absolute;
+                    color: rgb(255, 255, 255);
+                    font-size: 9px;
+                    right: -20px;
+                    top: -22px;
+                    display: inline-block;
+                    line-height: 14px;
+                    text-transform: uppercase;
+                    background-color: $color2;
+                    padding: 2px 6px;
+
+                    @include maxw($mobileBreakpoint) {
+                        display: none;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    &.mobile-menu-show-curent-page {
+        .main-navigation {
+            .menu-item {
+                &.current-menu-item {
+
+                    a {
+                        font-weight: bold;
+                    }
+
+                }
+            }
+        }
+    }
+
+    &.menu-item-has-underline {
+        .main-navigation {
+            .menu-item {
+
+                &:after {
+                    opacity: 0;
+                    @include underline-on-hover($menu_item_underline_color, $menu_item_underline_height);
+
+                }
+
+                &:hover:after {
+                    opacity: 1;
+                }
+
+                &.current-menu-item {
+
+                    &:after {
+                        @include minw($brMobileMenu) {
+                            @include underline-on-hover($menu_item_underline_color, $menu_item_underline_height);
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+        &.mobile-menu-show-curent-page {
+            .main-navigation {
+                .menu-item {
+                    &.current-menu-item {
+
+                        //horizontal line indicating active item
+                        a:before {
+                            height: 100%;
+                            width: 6px;
+                            content: '';
+                            display: block;
+                            background-color: $menu_item_underline_color;
+                            left: -43px;
+                            top: 0;
+                            position: absolute;
+
+
+                            @include minw($brMobileMenu) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+

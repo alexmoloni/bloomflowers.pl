@@ -1,0 +1,508 @@
+@function toRem($pixels, $root) {
+    @return $pixels / $root;
+}
+
+@function rem($pixels, $rootFontSize : 16px) {
+    $value: toRem($pixels, $rootFontSize);
+    @return $value * 1rem;
+}
+
+@function em($pixels, $root) {
+    @return $pixels / $root * 1em;
+}
+
+@mixin minw($br) {
+    @media (min-width: $br) {
+        @content;
+    }
+}
+
+@mixin maxw($br) {
+    @media (max-width: $br) {
+        @content;
+    }
+}
+
+@mixin iPhonePortrait() {
+    @media (max-height: 600px) and (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin iPhoneLandscape() {
+    @media (max-height: 500px) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@function toVw($value, $offset: 0, $viewportWidth: 1440) {
+    $size: $value / $viewportWidth * 100vw;
+    @if ($offset > 0) {
+        $size: $size + $offset;
+    }
+    @return $size;
+}
+
+@function toVwMobile($value, $offset: 0, $viewportWidth: 414) {
+    $size: $value / $viewportWidth * 100vw;
+    @if ($offset > 0) {
+        $size: $size + $offset;
+    }
+    @return $size;
+}
+
+@mixin shineAnimation() {
+    overflow: hidden;
+    position: relative;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-100%);
+        background: linear-gradient(30deg, #ffd401 0%, #ffeb96 50%, #ffeb96 51%, #ffd401 100%);
+    }
+
+    &:hover {
+        &:before {
+            animation: shine 0.3s ease-out;
+        }
+    }
+}
+
+//to use on btn element containing the <a> elem and <i> elem
+@mixin ctaButtonLayout() {
+    a, .txt {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex: 1 1 auto;
+        position: relative;
+        z-index: 20;
+    }
+    i {
+        display: inline-block;
+        background-image: url(/assets/images/btns/arrow-right.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        vertical-align: middle;
+    }
+
+}
+
+//to use on btn element containing the <a> elem and <i> elem
+@mixin animateArrow() {
+    &:hover {
+        i {
+            animation: arrow 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+    }
+}
+
+@mixin standardArrow() {
+    .arrow-right {
+        width: 8px;
+        height: 16px;
+        margin-left: 35px;
+    }
+}
+
+@mixin yellowBtnSmall() {
+    width: 204px;
+    height: 34px;
+    font-size: 15px;
+    background-color: $ctaColor;
+    color: $color1;
+
+    a, .txt {
+        padding-left: 52px;
+    }
+}
+
+@mixin prefix($what, $value) {
+    -webkit-#{$what}: #{$value};
+    -moz-#{$what}: #{$value};
+    -ms-#{$what}: #{$value};
+    -o-#{$what}: #{$value};
+    #{$what}: #{$value};
+}
+
+@mixin underline-on-hover($bgc: $color1, $height: 2px, $bottom: -16px ) {
+    content: '';
+    display: block;
+    bottom: 0;
+    width: 100%;
+    height: $height;
+    background-color: $bgc;
+    transition: all 0.2s;
+    position: absolute;
+}
+
+@mixin basicTransition() {
+    transition: all 0.4s;
+}
+
+@mixin basicTransitionLong() {
+    transition: all 0.6s;
+}
+
+@mixin with-css-background() {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+}
+
+@mixin blockAfterorBefore($width: 20px, $height: 20px) {
+    content: '';
+    display: block;
+    width: $width;
+    height: $height;
+}
+
+@mixin basicBoxAndInputShadow() {
+    box-shadow: 2px 7px 8px 0px #0000006b;
+}
+
+@mixin headerShadowAndBorder() {
+    box-shadow: 0px 17px 15px 5px rgba(0, 0, 0, 0.1);
+    border-bottom: solid 1px #dbdbdb;
+}
+
+@mixin fitFigurePictureImg() {
+    figure, picture, img {
+        width: 100%;
+        height: 100%;
+    }
+
+    img {
+        object-position: center;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+@mixin ulBasicList() {
+    list-style: none;
+
+    li {
+        display: flex;
+        align-items: center;
+        padding-left: 0;
+
+        &:before {
+            @include blockAfterorBefore();
+            width: toVw(8);
+            height: toVw(8);
+            border-radius: 50%;
+            background-color: $color2;
+            margin-right: 8px;
+
+            @include maxw($br-l) {
+                width: 7px;
+                height: 7px;
+            }
+        }
+    }
+}
+
+@mixin borderWithGradient() {
+    border-bottom: 2px solid;
+    border-image-source: $main-gradient;
+    border-image-slice: 1;
+}
+
+@mixin basicSpacing($property, $side, $value) {
+    #{$property}-#{$side}: toVw($value);
+
+    @include maxw($br-l) {
+        #{$property}-#{$side}: #{$value}px;
+    }
+
+    @include maxw($mobileBreakpoint) {
+        #{$property}-#{$side}: #{$value*0.85}px;
+    }
+
+    @include maxw($br-xs) {
+        #{$property}-#{$side}: #{$value*0.75}px;
+    }
+}
+
+@mixin basicVwProperty($property, $value) {
+    #{$property}: toVw($value);
+
+    @include maxw($br-l) {
+        #{$property}: #{$value}px;
+    }
+
+    @include maxw($mobileBreakpoint) {
+        #{$property}: #{$value*0.85}px;
+    }
+
+    @include maxw($br-xs) {
+        #{$property}: #{$value*0.75}px;
+    }
+}
+
+@mixin basicHeight($value) {
+    @include basicVwProperty(height, $value);
+}
+
+@mixin basicWidth($value) {
+    @include basicVwProperty(width, $value);
+}
+
+@mixin basicPadding($side, $value) {
+    @include basicSpacing(padding, $side, $value);
+}
+
+
+@mixin basicPaddingTopBottom( $value) {
+    @include basicSpacing(padding, top, $value);
+    @include basicSpacing(padding, bottom, $value);
+}
+
+@mixin basicPaddingLeftRight($value) {
+    @include basicSpacing(padding, left, $value);
+    @include basicSpacing(padding, right, $value);
+}
+
+@mixin basicPaddingAll($value) {
+    @include basicPaddingLeftRight($value);
+    @include basicPaddingTopBottom($value);
+}
+
+@mixin basicPadding20() {
+    @include basicPadding(top, 20);
+    @include basicPadding(bottom, 20);
+    @include basicPadding(left, 20);
+    @include basicPadding(right, 20);
+}
+
+@mixin basicMargin($side, $value) {
+    @include basicSpacing(margin, $side, $value);
+}
+
+@mixin basicMarginTopBottom( $value) {
+    @include basicMargin(top, $value);
+    @include basicMargin(bottom, $value);
+}
+
+@mixin basicMarginLeftRight( $value) {
+    @include basicMargin(left, $value);
+    @include basicMargin(right, $value);
+}
+
+@mixin basicMarginBottom( $value) {
+    @include basicMargin(bottom, $value);
+}
+
+@mixin basicMarginTop( $value) {
+    @include basicMargin(top, $value);
+}
+
+@mixin basicMarginLeft( $value) {
+    @include basicMargin(left, $value);
+}
+
+@mixin basicMarginRight( $value) {
+    @include basicMargin(right, $value);
+}
+
+@mixin basicPaddingBottom( $value) {
+    @include basicPadding(bottom, $value);
+}
+
+@mixin basicPaddingTop( $value) {
+    @include basicPadding(top, $value);
+}
+
+@mixin basicMarginAll($value) {
+    @include basicMarginTopBottom($value);
+    @include basicMarginLeftRight($value);
+}
+
+@mixin basicMarginBottom30() {
+    @include basicMargin(bottom, 30);
+}
+
+@mixin basicMarginBottom20() {
+    @include basicMargin(bottom, 20);
+}
+
+@mixin basicPaddingBottom30() {
+    @include basicPadding(bottom, 30);
+}
+
+@mixin basicPaddingBottom60() {
+    @include basicPadding(bottom, 60);
+}
+
+@mixin basicPaddingTop60() {
+    @include basicPadding(top, 60);
+}
+
+@mixin basicGridColumnGap($value) {
+    @include basicVwProperty(grid-column-gap, $value);
+}
+
+@mixin basicGridRowGap($value) {
+    @include basicVwProperty(grid-row-gap, $value);
+}
+
+@mixin basicGridColumnRowGap($value) {
+    @include basicGridColumnGap($value);
+    @include basicGridRowGap($value);
+}
+
+
+@mixin basicDarken() {
+    filter: brightness(0.7) blur(0.15px);
+}
+
+@mixin basicLighten() {
+    filter: brightness(1.2);
+}
+
+@mixin basicBlackAndWhite() {
+    filter: grayscale(100%);
+    position: relative;
+
+    &:after {
+        @include blockAfterorBefore();
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: linear-gradient(122deg, #000 0%, rgba(0, 0, 0, 0) 100%);
+        opacity: 0.3;
+    }
+}
+
+@mixin basicFontSize($size: 16) {
+    font-size: toVw($size);
+    @include maxw($br-l) {
+        font-size: #{$size}px;
+    }
+    @include maxw($mobileBreakpoint) {
+        @if $size < (15 / 0.8) {
+            font-size: #{$size}px;
+
+        } @else {
+            font-size: #{$size * 0.8}px;
+        }
+    }
+
+    @include maxw($mobileBreakpoint) {
+        @if $size < (14 / 0.7) {
+            font-size: #{$size}px;
+
+        } @else {
+            font-size: #{$size * 0.8}px;
+        }
+    }
+}
+
+@mixin customSelectArrow() {
+    -o-appearance: none;
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    @include with-css-background();
+    background-image: url('/images/svg/arrow-down-black.svg');
+    background-size: toVw(10) toVw(5);
+    background-position: 95% 50%;
+
+    @include maxw($br-l) {
+        background-size: 10px 5px;
+    }
+
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+
+@mixin basicGrid() {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    @supports (display: grid) {
+        display: grid;
+    }
+}
+
+@mixin basicNewsletterSignupForm() {
+    padding: 0 !important;
+
+    .input-btn-wrap {
+        display: flex;
+        align-items: stretch;
+        @include basicMarginBottom(15);
+
+
+        input[type=email] {
+            flex: 1;
+            @include basicFontSize(17);
+            font-weight: 400;
+            color: $color1;
+
+            @include maxw($br-xs) {
+                width: 160px;
+                flex-basis: auto;
+            }
+
+            &::placeholder {
+                @include basicFontSize(17);
+                font-weight: 300;
+                color: $color1;
+            }
+        }
+
+        input[type=submit] {
+            @include basicVwProperty(flex-basis, 150);
+            flex-grow: 0;
+            flex-shrink: 0;
+            @include basicFontSize(16);
+            text-transform: uppercase;
+            border: 1px solid $color1;
+            @include basicTransition();
+            cursor: pointer;
+
+            @include maxw($br-xs) {
+                flex-basis: 90px;
+            }
+
+            &:hover {
+                background-color: $color1;
+                color: #fff;
+            }
+
+        }
+    }
+
+
+    .label-checkbox {
+        text-align: left;
+        font-weight: 300;
+        display: flex !important;
+        align-items: center;
+        @include basicFontSize(15);
+
+
+        input {
+            @include basicMargin(right, 15);
+        }
+    }
+    input[type=email] {
+        border-right: none !important;
+    }
+}

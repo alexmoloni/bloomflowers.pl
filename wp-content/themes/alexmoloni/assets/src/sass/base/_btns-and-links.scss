@@ -1,0 +1,153 @@
+button, a {
+    cursor: pointer;
+}
+
+@mixin btn() {
+    transition: all 0.3s;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    font-size: toVw(14);
+    line-height: 1;
+    position: relative;
+    font-weight: 600;
+    text-decoration: none !important;
+    color: $color1;
+    font-family: $headingsFont;
+
+    @include maxw($br-l) {
+        font-size: 14px;
+    }
+}
+
+
+@mixin btnWithFill() {
+    @include basicHeight(40);
+    @include basicPaddingLeftRight(35);
+    border-radius: 5px;
+
+    @include maxw($br-xs) {
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        max-width: 270px;
+        line-height: 1.3;
+    }
+
+    &.btn-small {
+        @include btnSmall();
+
+    }
+}
+
+@mixin btnSmall() {
+    @include basicPaddingLeftRight(20);
+    @include basicFontSize(13);
+}
+
+
+//btn with pink bg
+@mixin btn-cta-1() {
+    @include btn();
+    @include btnWithFill();
+    background-color: $color2 !important;
+    color: #fff !important;
+    border: 3px solid $color2;
+    @include basicVwProperty(border-width, 3);
+
+    &:hover {
+        background-color: hsl(336, 100%, 74%) !important;
+        //color: $color2 !important;
+    }
+}
+
+.btn-cta-1 {
+    @include btn-cta-1();
+}
+
+//btn with white bg
+@mixin btn-cta-2() {
+    @include btn();
+    @include btnWithFill();
+    background-color: #fff !important;
+    color: $color2 !important;
+    border: 3px solid $color2;
+    @include basicVwProperty(border-width, 3);
+
+    &:hover {
+        background-color: $color2 !important;
+        color: #fff !important;
+    }
+}
+
+.btn-cta-2 {
+    @include btn-cta-2();
+}
+
+@mixin btn-cta-3() {
+    @include btn();
+    color: $color1;
+
+    &:after {
+        @include blockAfterorBefore();
+        @include with-css-background();
+        @include basicWidth(12);
+        background-image: url('/images/svg/arrow-right-thin-pink.svg');
+        @include basicMarginLeft(5);
+
+    }
+
+    &:hover {
+    }
+}
+
+.btn-cta-3 {
+    @include btn-cta-3();
+}
+
+
+a {
+    color: $linksColor;
+    @include basicTransition();
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+@mixin no-style {
+    color: inherit;
+    cursor: inherit;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.no-style {
+    @include no-style();
+}
+
+a.underline-on-hover {
+    //underline on hover - no underline because want custom positioning
+    position: relative;
+
+    &:after {
+        transition: all 0.3s;
+        opacity: 0;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: $color1;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+    }
+
+    &:hover:after {
+        opacity: 1;
+    }
+}

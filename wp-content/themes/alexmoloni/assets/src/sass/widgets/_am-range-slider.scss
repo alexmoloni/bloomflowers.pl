@@ -1,0 +1,84 @@
+.am-range-slider {
+    $slider-handle-width: toVw(18);
+
+    .heading {
+        @include basicMarginBottom(15);
+    }
+
+    .price-range {
+        width: calc(100% - 15px);
+    }
+
+    .inputs-wrap {
+        @include basicGrid();
+        width: 100%;
+        align-items: center;
+        @include basicMarginBottom(20);
+        grid-template-columns: 1fr 1fr;
+        @include basicGridColumnGap(20);
+        justify-content: space-between;
+
+
+        > input {
+            width: 70%;
+            @include basicHeight(35);
+            border: 1px solid $colorBorders;
+            color: $colorGrey1;
+            @include basicPaddingLeftRight(5);
+            min-width: 80px;
+
+            &:last-child {
+                text-align: right;
+                justify-self: end;
+            }
+        }
+    }
+
+    .labels-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        @include basicMarginBottom(15);
+
+    }
+
+    &.not-show-interactive-text-inputs {
+        .inputs-wrap {
+            display: none;
+        }
+    }
+
+    .noUi-target {
+        border: none;
+        box-shadow: none;
+
+        &.noUi-horizontal {
+            @include basicHeight(5);
+        }
+
+        .noUi-connects {
+            background-color: #fff;
+            border: 1px solid $colorGrey3;
+        }
+
+        .noUi-connect {
+            background-color: $color2;
+        }
+
+        .noUi-handle {
+            border-radius: 50%;
+            background-color: #fff;
+            border: 3px solid $color2;
+            @include basicWidth(18);
+            @include basicHeight(18);
+            cursor: pointer;
+
+            &:before, &:after {
+                display: none;
+            }
+
+
+        }
+    }
+}

@@ -1,0 +1,50 @@
+footer#footer {
+    .footer-row-1 {
+        background-color: $colorGrey2;
+    }
+
+    .socials {
+        text-align: center;
+        @include basicPadding(bottom, 30);
+        border-bottom: 1px solid $colorBorders;
+        @include basicVwProperty(border-width, 1);
+
+    }
+
+    .links-wrap {
+        @include basicPadding(top, 20);
+        @include basicGrid();
+        grid-template-columns: repeat(auto-fit, minmax(260px, 33fr));
+        @include basicVwProperty(grid-row-gap, 25);
+        @include basicVwProperty(grid-column-gap, 25);
+
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .link-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            .link, p {
+                color: $color1;
+                display: inline-block;
+                @include basicMargin(bottom, 4);
+                @include basicFontSize(13);
+            }
+
+            p {
+                line-height: 1.65;
+            }
+        }
+
+        .col-logo {
+            @include basicVwProperty(max-width, 200);
+
+            @include maxw($mobileBreakpoint) {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+    }
+}

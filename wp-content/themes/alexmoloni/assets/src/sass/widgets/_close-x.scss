@@ -1,0 +1,10 @@
+.close-x {
+    background-color: transparent;
+    border: none;
+    @include with-css-background();
+    background-image: url(/images/svg/close-x.svg);
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

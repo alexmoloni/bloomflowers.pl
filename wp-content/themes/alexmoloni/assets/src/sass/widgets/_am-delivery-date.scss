@@ -1,0 +1,52 @@
+.am-delivery-date {
+    .icon-text-wrap {
+        display: flex;
+        align-items: center;
+    }
+
+    .extra-info-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info-box {
+        @include basicMarginTopBottom(12);
+        border-radius: 5px;
+        @include basicPaddingTopBottom(4);
+        @include basicPaddingLeftRight(12);
+        background-color: $colorGrey2;
+        display: inline-flex;
+        align-items: center;
+
+
+        .icon {
+            @include basicHeight(20);
+            @include basicWidth(20);
+            @include basicMarginLeftRight(10);
+
+        }
+
+        &.hidden {
+            display: none;
+        }
+
+    }
+
+    .extra-price-info {
+        color: $colorWarnings;
+    }
+
+    .info-selected-date {
+        font-weight: bold;
+
+    }
+
+    .icon {
+        display: inline-block;
+        @include basicWidth(25);
+        @include basicHeight(25);
+        @include basicMarginRight(12);
+
+    }
+}

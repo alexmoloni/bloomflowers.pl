@@ -1,0 +1,35 @@
+.layout-with-sidebar {
+    @include basicMarginTop(35);
+
+
+    .main-cols-wrap {
+        display: flex;
+        align-items: flex-start;
+        @include maxw($mobileBreakpoint) {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        > .sidebar {
+            flex: 0 0 toVw(306);
+            min-width: 306px;
+            @include basicMarginRight(30);
+
+            @include maxw($mobileBreakpoint) {
+                flex: 1;
+                min-width: 0;
+                @include basicMarginRight(0);
+                @include basicMarginBottom(30);
+                width: 100%;
+                max-width: 500px;
+            }
+
+        }
+
+        > .main-content {
+            flex: 1;
+            @include maxw($mobileBreakpoint) {
+            }
+        }
+    }
+}

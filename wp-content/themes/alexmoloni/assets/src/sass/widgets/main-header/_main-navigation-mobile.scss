@@ -1,0 +1,140 @@
+@include maxw($brMobileMenu) {
+    header.main-header {
+
+        .main-navigation {
+            z-index: 100;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            border: solid 1px #e7ebed;
+            opacity: 0;
+            background-color: #e7e6e6;
+
+            &.is-open {
+                transform: translateX(0) !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                @include headerShadowAndBorder();
+                border-top: 1px solid #dbdbdb !important;
+            }
+
+            .close-x {
+                display: block;
+            }
+
+            //in order for underline to work on all widths
+            .desktop-menu-wrap {
+                display: flex;
+                align-items: stretch;
+
+                .menu-header-menu-container {
+                    display: flex;
+                    align-items: stretch;
+
+                    .menu-item {
+                        display: flex;
+                        align-self: stretch;
+
+                        a {
+                            display: flex;
+                            align-items: center;
+                        }
+
+                    }
+                }
+            }
+
+            .mobile-menu-wrap {
+                display: block;
+                width: 100%;
+                transform: translateY(-40px);
+            }
+
+            .desktop-menu-wrap {
+                display: none;
+            }
+        }
+    }
+
+    header.main-header.menu-from-right {
+        .main-navigation {
+            right: 0;
+            left: auto;
+            transform: translateX(100%);
+        }
+    }
+
+    header.main-header.keep-close-x-on-menu-open {
+        .hamburger.is-active {
+            z-index: 100002;
+        }
+    }
+
+    header.main-header.menu-from-left {
+        .main-navigation {
+            left: 0;
+            right: auto;
+            transform: translateX(-100%);
+        }
+    }
+
+    header.main-header.menu-from-fixed {
+        .main-navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            visibility: hidden;
+        }
+    }
+
+    header.main-header.mobile-menu-fade-in {
+        .main-navigation {
+            opacity: 0;
+
+            &.is-open {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    header.main-header.mobile-menu-full-width {
+        .main-navigation {
+            max-width: none;
+        }
+    }
+
+    header.main-header.mobile-menu-align-items-center {
+        .main-navigation {
+            .menu-item {
+                text-align: center;
+            }
+        }
+    }
+
+    /*styles for when header becomes sticky*/
+    header.main-header.sticky {
+
+        .main-navigation {
+            a.btn-main {
+                display: none;
+            }
+        }
+    }
+
+    body.js-loaded {
+        .main-navigation {
+            opacity: 1;
+        }
+    }
+}

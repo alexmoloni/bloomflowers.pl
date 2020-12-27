@@ -1,0 +1,93 @@
+%headings {
+    font-family: $headingsFont;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+
+@mixin heading1() {
+    @extend %headings;
+    @include basicFontSize(42);
+    text-transform: uppercase;
+
+}
+
+.heading-1 {
+    @include heading1();
+}
+
+@mixin heading2() {
+    @extend %headings;
+    @include basicFontSize(32);
+    @include basicMarginTopBottom(27);
+}
+
+.heading-2 {
+    @include heading2();
+}
+
+@mixin heading3() {
+    @extend %headings;
+    @include basicFontSize(25);
+    @include basicMargin(bottom, 22);
+}
+
+.heading-3 {
+    @include heading3();
+}
+
+@mixin heading4() {
+    @extend %headings;
+    @include basicFontSize(19);
+    font-weight: 400;
+    @include basicMargin(bottom, 25);
+}
+
+.heading-4 {
+    @include heading4();
+}
+
+@mixin heading5() {
+    @extend %headings;
+    font-weight: 600;
+    @include basicMargin(bottom, 10);
+}
+
+.heading-5 {
+    @include heading5();
+}
+
+body {
+    font-family: $textFont;
+}
+
+@mixin textBig() {
+    @include basicFontSize(18);
+    line-height: 1.7;
+}
+
+.text-big {
+    @include textBig();
+}
+
+@mixin thin() {
+    font-weight: 300 !important;
+}
+
+.thin {
+    @include thin();
+}
+
+
+small {
+    font-size: toVw(12);
+    line-height: 1.33;
+    @include maxw($br-l) {
+        font-size: 12px;
+    }
+}
+
+main.main {
+    p {
+    }
+}

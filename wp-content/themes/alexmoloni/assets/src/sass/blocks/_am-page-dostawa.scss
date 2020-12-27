@@ -1,0 +1,16 @@
+.am-page-dostawa {
+    .section-1 {
+        @include basicPaddingTop(80);
+
+        .text-wrap {
+            line-height: 1.6;
+            @include basicPaddingTopBottom(30);
+
+
+            p {
+                @include basicMarginBottom(8);
+
+            }
+        }
+    }
+}

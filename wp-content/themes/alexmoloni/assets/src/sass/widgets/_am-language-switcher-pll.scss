@@ -1,0 +1,45 @@
+.am-language-switcher-pll {
+    display: flex;
+    align-self: center;
+
+    .lang-item {
+        display: flex;
+        align-items: center;
+        @include basicMargin(right, 7);
+
+        a {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            @include fitFigurePictureImg();
+            @include basicVwProperty(width, 20);
+            @include basicVwProperty(height, 20);
+            border: 3px solid transparent;
+            border-radius: 50%;
+            @include basicTransition();
+
+            @include maxw($brMobileMenu) {
+                width: 25px;
+                height: 25px;
+            }
+
+        }
+
+        .text {
+            @include basicFontSize(14);
+            color: $color1;
+        }
+
+        &:last-child {
+            @include basicMargin(right, 0);
+        }
+    }
+
+    .lang-item a:hover {
+        .icon {
+            border-color: $colorGrey1;
+        }
+    }
+}

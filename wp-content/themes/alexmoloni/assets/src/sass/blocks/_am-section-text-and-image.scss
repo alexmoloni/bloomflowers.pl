@@ -1,0 +1,41 @@
+.am-section-text-and-image {
+    @include basicPadding(top, 90);
+    @include basicPadding(bottom, 60);
+
+    .cols-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include maxw($mobileBreakpoint) {
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .col-text {
+            max-width: 40vw;
+            @include basicMargin(right, 40);
+
+            @include maxw($mobileBreakpoint) {
+                max-width: none;
+                margin-bottom: 40px;
+            }
+
+            .text-wrap {
+                line-height: 1.7;
+            }
+        }
+
+        .col-image {
+            flex: 0 0 34%;
+            min-width: 320px;
+
+            @include maxw($mobileBreakpoint) {
+                flex-basis: auto;
+                min-width: 0;
+                max-width: 320px;
+
+            }
+        }
+    }
+}

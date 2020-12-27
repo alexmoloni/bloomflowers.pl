@@ -1,0 +1,33 @@
+.am-shop-breadcrumb {
+    @include basicPaddingTopBottom(16);
+    background-color: $colorGrey2;
+
+    .title {
+        @include basicMarginBottom(15);
+    }
+
+    .links-wrap {
+        display: flex;
+        align-items: center;
+
+        @include maxw($mobileBreakpoint) {
+            flex-wrap: wrap;
+        }
+
+
+
+        a {
+            color: $colorGrey1;
+            @include basicFontSize(15);
+
+
+
+        }
+
+        .separator {
+            @include basicMarginLeftRight(10);
+        }
+    }
+
+
+}

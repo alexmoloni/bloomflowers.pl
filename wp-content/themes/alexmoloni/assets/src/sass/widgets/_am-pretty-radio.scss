@@ -1,0 +1,30 @@
+.am-pretty-radio {
+    input {
+        display: none;
+    }
+
+    .label-text {
+        @include basicHeight(30);
+        @include basicFontSize(13);
+        @include basicPaddingLeftRight(15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid $color2;
+        border-radius: 2px;
+        background-color: #fff;
+        @include basicTransition();
+        cursor: pointer;
+        text-transform: uppercase;
+        font-family: $font1;
+        font-weight: 500;
+    }
+
+    input:checked ~ .label-text,
+    .label-text:hover {
+        background-color: $color2a;
+        color: white;
+    }
+
+
+}

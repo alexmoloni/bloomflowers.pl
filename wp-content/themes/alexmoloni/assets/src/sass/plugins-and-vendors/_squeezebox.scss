@@ -1,0 +1,75 @@
+.squeezebox {
+    .squeezhead {
+        @include basicFontSize(20);
+        cursor: pointer;
+        color: $color1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        @include basicPaddingBottom(6);
+        border-bottom: 2px solid #eaeaea;
+
+        &:after {
+            @include blockAfterorBefore();
+            @include basicVwProperty(width, 22);
+            @include basicVwProperty(heigh, 10);
+            @include with-css-background();
+            background-image: url('/images/svg/arrow-down-light-grey.svg');
+            @include basicTransition();
+            margin-left: auto;
+
+        }
+
+        .number {
+            @include basicWidth(33);
+            @include basicHeight(33);
+            border-radius: 50%;
+            @include basicFontSize(22);
+            color: $color2;
+            background-color: $colorGrey2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include basicMarginRight(10);
+
+        }
+
+    }
+
+    .squeezhead:hover {
+    }
+    
+    .squeezhead.open {
+        @include basicMarginBottom(4);
+
+
+        &:after {
+            transform: rotateX(180deg);
+        }
+    }
+    .squeezecnt {
+        overflow: hidden;
+        @include basicMarginBottom30();
+        @include basicFontSize(16);
+        @include basicPaddingTopBottom(30);
+        @include basicPaddingLeftRight(40);
+        background-color: rgba(215, 215, 215, 0.4);
+        border-radius: 20px;
+
+        p {
+            margin-bottom: 1em;
+            line-height: 1.7;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+
+
+        &:last-child {
+            @include basicMargin(bottom, 0);
+
+        }
+    }
+}

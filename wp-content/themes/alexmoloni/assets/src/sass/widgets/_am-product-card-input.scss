@@ -1,0 +1,14 @@
+.am-product-card-input {
+
+    textarea {
+        @include basicPaddingTop(15);
+        @include basicPadding(left, 15);
+        @include basicHeight(50);
+
+
+        &::placeholder {
+            color: $colorGrey1;
+        }
+    }
+
+}

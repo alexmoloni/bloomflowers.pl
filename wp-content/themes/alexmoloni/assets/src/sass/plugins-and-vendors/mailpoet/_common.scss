@@ -1,0 +1,6 @@
+form.mailpoet_form {
+    .mailpoet_paragraph {
+        @include basicMarginAll(0);
+        margin-bottom: 0 !important;
+    }
+}

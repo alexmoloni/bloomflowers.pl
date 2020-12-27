@@ -1,0 +1,87 @@
+.am-shop-sidebar {
+    $color-grey: #F2F2F2;
+
+    .sidebar-inner-section {
+        background-color: $colorGrey3;
+        border: 1px solid $color-grey;
+        width: 100%;
+        @include basicPaddingTopBottom(11);
+        @include basicPaddingLeftRight(17);
+        font-family: $font1;
+        position: relative;
+
+    }
+
+    .shop-mobile-toggle {
+        @include maxw($mobileBreakpoint) {
+            background-color: $color2;
+            color: #fff;
+            border: 1px solid #F2F2F2;
+            margin-bottom: 0 !important;
+            cursor: pointer;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &:after {
+                @include blockAfterorBefore();
+                @include with-css-background();
+                background-image: url('/images/svg/arrow-down-white.svg');
+                @include basicTransition();
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+
+    .shop-mobile-toggle.target-visible {
+        &:after {
+            transform: rotateX(180deg);
+        }
+    }
+
+    .mobile-toggle-target {
+        @include maxw($mobileBreakpoint) {
+            display: none;
+        }
+    }
+
+    .section-filters-title {
+        font-weight: bold;
+    }
+
+    .section-title {
+        @include basicMarginBottom(15);
+    }
+
+    .section-price {
+        @include basicPaddingBottom(25);
+    }
+
+    .am-pretty-checkbox {
+        @include basicFontSize(13);
+
+    }
+
+    .btns-wrap {
+
+        @include basicPaddingTopBottom(25);
+
+        display: flex;
+        justify-content: center;
+
+        .btn-submit {
+            @include basicMarginRight(20);
+
+        }
+
+    }
+
+
+
+    .section-newsletter {
+
+    }
+
+}

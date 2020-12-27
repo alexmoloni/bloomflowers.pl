@@ -1,0 +1,13 @@
+form.mailpoet_form {
+    input[type=text],
+    input[type=number],
+    input[type=password],
+    input[type=email],
+    input[type=search],
+    input[type=submit],
+    textarea {
+        border: 1px solid $colorBorders;
+        @include basicPaddingAll(14);
+        margin: 0;
+    }
+}

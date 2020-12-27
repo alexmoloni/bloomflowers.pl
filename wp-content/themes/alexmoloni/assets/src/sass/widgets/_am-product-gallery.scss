@@ -1,0 +1,111 @@
+.am-product-gallery {
+
+    @include maxw($mobileBreakpoint) {
+        margin-bottom: 30px;
+    }
+
+    ul, li {
+        list-style-type: none;
+    }
+
+
+    .cols-wrap {
+        display: flex;
+        @include basicHeight(500);
+        overflow: hidden;
+        position: relative;
+
+        @include maxw($mobileBreakpoint) {
+            justify-content: flex-start;
+            height: auto;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .col-left {
+            @include basicWidth(60);
+            @include basicMarginRight(16);
+            position: relative;
+            flex: 0 0 toVw(60);
+
+            @include maxw($mobileBreakpoint) {
+                flex-basis: auto;
+                width: 100%;
+                order: 2;
+            }
+
+            .product-image-thumb {
+                width: 100%;
+                @include basicHeight(70);
+                @include fitFigurePictureImg();
+                cursor: pointer;
+
+                @include maxw($mobileBreakpoint) {
+                    height: 70px;
+                }
+            }
+
+            .slick-track {
+                transform: translate3d(0px, 0px, 0px) !important;
+            }
+
+            .slick-current {
+                .product-image-thumb {
+                    figure {
+                        border: 3px solid $color2;
+                        border-radius: 3px;
+                        overflow: hidden;
+                    }
+
+                }
+            }
+        }
+
+        .col-right {
+            @include basicWidth(490);
+            @include fitFigurePictureImg();
+
+            @include maxw(1200px) {
+                width: toVw(490);
+            }
+
+            @include maxw($mobileBreakpoint) {
+                width: 100%;
+                height: auto;
+                flex-basis: auto;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 20px;
+            }
+
+            .product-gallery {
+                @include maxw($mobileBreakpoint) {
+                    width: 100%;
+                    max-width: 450px;
+                }
+
+                .product-image {
+
+                    @include maxw($mobileBreakpoint) {
+                        height: 400px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    @include maxw($br-xs) {
+                        height: 350px;
+                    }
+
+                    img {
+                        @include maxw($mobileBreakpoint) {
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+}
