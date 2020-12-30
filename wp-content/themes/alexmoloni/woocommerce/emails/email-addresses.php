@@ -56,7 +56,7 @@ $shipping   = $order->get_formatted_shipping_address();
 	    <?php
 	    if ( get_post_meta( $order->get_id(), 'no_address', true ) ) { ?>
             <br> <p>
-                Zaznaczono: <?= get_post_meta( $order->get_id(), 'no_address', true ) ?>
+                <?= __('Zaznaczono', 'alexmoloni') ?>: <?= get_post_meta( $order->get_id(), 'no_address', true ) ?>
             </p>
 	    <?php }
 	    ?>

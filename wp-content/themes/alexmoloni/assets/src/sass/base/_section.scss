@@ -5,4 +5,11 @@
         color: $color2;
     }
 
+    > .container {
+        > .heading-2 {
+            @include basicMarginTop(0);
+
+        }
+    }
+
 }

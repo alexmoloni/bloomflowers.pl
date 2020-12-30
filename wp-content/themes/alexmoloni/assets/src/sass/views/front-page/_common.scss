@@ -12,4 +12,9 @@ body.home {
             }
         }
     }
+
+    .section-hits {
+        @include basicPaddingTop(0);
+
+    }
 }
