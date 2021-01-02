@@ -4,7 +4,7 @@ $light_grey_background = get_field( 'light_grey_background' ) ?? false;
 $heading               = get_field( 'heading' ) ?? false;
 $subheading            = get_field( 'subheading' ) ?? false;
 $text_align            = get_field( 'text_align' ) ?? 'left';
-$images                = get_field( 'images' ) ?? [];
+$images                = get_field( 'images' ) ?: [];
 
 ?>
 <div class="am-gallery-section <?= $with_padding ? 'section' : '' ?> <?= $light_grey_background ? 'bg-light-grey' : '' ?>">

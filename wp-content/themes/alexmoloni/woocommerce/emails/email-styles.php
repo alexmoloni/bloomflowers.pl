@@ -326,5 +326,13 @@ $text_lighter_40 = wc_hex_lighter( $text, 40 );
     ff
     }
 
+    .wc-bacs-bank-details {
+        padding-left: 0;
+    }
+    .wc-bacs-bank-details li {
+
+        list-style-type: none;
+    }
+
 
 <?php

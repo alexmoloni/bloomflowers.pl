@@ -8239,7 +8239,10 @@ header.main-header .main-navigation .menu-item-has-children {
           align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(110px, 7.63889vw));
   grid-row-gap: 0.69444vw;
-  grid-column-gap: 0.69444vw; }
+  grid-column-gap: 0.69444vw;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch; }
   @supports (display: grid) {
     .am-complementary-products .items-wrap {
       display: -ms-grid;

@@ -4,6 +4,7 @@
         grid-template-columns: repeat(auto-fit, minmax(110px, toVw(110)));
         @include basicVwProperty(grid-row-gap, 10);
         @include basicVwProperty(grid-column-gap, 10);
+        align-items: stretch;
 
         @include maxw(1200px) {
             grid-template-columns: repeat(auto-fit, minmax(110px, 130px));
