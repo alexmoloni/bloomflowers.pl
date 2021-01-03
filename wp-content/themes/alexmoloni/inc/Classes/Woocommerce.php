@@ -148,6 +148,11 @@ class Woocommerce {
 		return ( $ts < strtotime( '+1 month' ) );
 	}
 
+	public static function isInStock( $prod_id ) {
+		$product      = wc_get_product( $prod_id );
+		return $product->is_in_stock();
+	}
+
 	public static function isProductRecommended( $prod_id ) {
 		return get_field( 'recommended', $prod_id );
 	}

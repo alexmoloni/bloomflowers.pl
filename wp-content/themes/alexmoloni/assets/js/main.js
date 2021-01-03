@@ -862,8 +862,10 @@ function handleChangeVariation() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers */ "./assets/src/js/imports/helpers.js");
 /* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cart */ "./assets/src/js/imports/shop/cart.js");
+/* harmony import */ var _popups__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../popups */ "./assets/src/js/imports/popups.js");
 
 var $ = jQuery.noConflict();
+
 
 
 function handleRemoveCartItem() {
@@ -890,9 +892,20 @@ function toggleShopSectionMobile() {
   });
 }
 
+function handleShopVacation() {
+  var popup = document.querySelector('#popup-store-vacation');
+
+  if (!popup) {
+    return;
+  }
+
+  _popups__WEBPACK_IMPORTED_MODULE_2__["default"].showPopup('popup-store-vacation');
+}
+
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   handleRemoveCartItem();
   toggleShopSectionMobile();
+  handleShopVacation();
 });
 
 /***/ }),

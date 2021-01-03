@@ -94,3 +94,9 @@ if ( ! function_exists( 'alexmoloni_setup' ) ) :
 endif;
 
 add_action( 'after_setup_theme', 'alexmoloni_setup' );
+
+function add_link_atts($atts) {
+	$atts['class'] = "nav-link";
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'add_link_atts');

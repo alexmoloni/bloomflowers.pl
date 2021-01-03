@@ -21,6 +21,8 @@ function enqueueJsAndCss() {
 
 	wp_enqueue_script( 'hammer', 'https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js', array( 'jquery' ), null, true );
 
+	wp_enqueue_script( 'micromodal', 'https://cdn.jsdelivr.net/npm/micromodal@0.4.6/dist/micromodal.min.js', array( 'jquery' ), null, true );
+
 	if ( is_page_template( 'page_o-nas.php' ) ) {
 		wp_enqueue_script( 'waypoints', 'https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js', array( 'jquery' ), null, true );
 	}

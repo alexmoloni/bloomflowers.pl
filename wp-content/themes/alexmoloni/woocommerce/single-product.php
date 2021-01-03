@@ -89,15 +89,19 @@ if ( have_posts() ):
 									<?php endforeach; ?>
                                 </div>
 							<?php endif; ?>
-                            <div class="btns-wrap">
-								<?php amAddToCartBtn( [
-									'product' => $product
-								] ); ?>
-								<?php amAddToCartBtn( [
-									'product'     => $product,
-									'buy_now_btn' => true
-								] ); ?>
-                            </div>
+                            <?php if ($product->is_in_stock()): ?>
+                                <div class="btns-wrap">
+		                            <?php amAddToCartBtn( [
+			                            'product' => $product
+		                            ] ); ?>
+		                            <?php amAddToCartBtn( [
+			                            'product'     => $product,
+			                            'buy_now_btn' => true
+		                            ] ); ?>
+                                </div>
+                            <?php else: ?>
+                                <h4 class="heading-4 sold-out-text"><?= __( 'Wyprzedany', 'alexmoloni' ) ?></h4>
+                            <?php endif; ?>
                             <div class="categories-wrap">
                                 <h4 class="heading-5 heading"><?= __( 'Kategorie', 'alexmoloni' ) ?>:</h4>
                                 <div class="links-wrap">

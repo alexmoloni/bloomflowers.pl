@@ -17,6 +17,7 @@ if ( have_posts() ):
 	while ( have_posts() ):
 		the_post();
 		the_content();
+		do_action( 'store_vacation_popup' );
 	endwhile;
 endif;
 

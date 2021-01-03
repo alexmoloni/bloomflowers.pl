@@ -17,7 +17,7 @@ function amShopSidebar( $options = null ) {
 					}
 					?>
                     <li class="category-item sidebar-inner-section <?= $selected ? 'selected' : '' ?>">
-                        <a href="<?= get_term_link( $cat->term_id ) ?>"><?= $cat->name ?></a>
+                        <a class="shop-category-link" href="<?= get_term_link( $cat->term_id ) ?>"><?= $cat->name ?></a>
                     </li>
 				<?php endforeach; ?>
             </ul>

@@ -1,7 +1,9 @@
 import helpers from "../helpers";
 
+
 const $ = jQuery.noConflict();
 import cart from "./cart";
+import popups from "../popups";
 
 function handleRemoveCartItem() {
 
@@ -30,7 +32,16 @@ function toggleShopSectionMobile() {
 }
 
 
+function handleShopVacation() {
+    const popup = document.querySelector('#popup-store-vacation');
+    if (!popup) {
+        return
+    }
+    popups.showPopup('popup-store-vacation');
+}
+
 export default function () {
     handleRemoveCartItem();
     toggleShopSectionMobile();
+    handleShopVacation();
 }

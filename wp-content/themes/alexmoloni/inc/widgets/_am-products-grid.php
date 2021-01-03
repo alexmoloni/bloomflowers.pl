@@ -113,8 +113,8 @@ function amProductsGrid( $options = null ) {
                                     <h3 class="title"><?= $product->get_title() ?></h3>
 									<?php if ( $is_variable ): ?>
                                         <div class="price-wrap-variable">
-                                            <span class="label"><?= __('od', 'alexmoloni') ?></span>&nbsp;<span class="value"><?= wc_price( $price_min ) ?></span><br>
-                                            <span class="label"><?= __('do', 'alexmoloni') ?></span>&nbsp;<span class="value"><?= wc_price( $price_max ) ?></span>
+                                            <span class="label"><?= __( 'od', 'alexmoloni' ) ?></span>&nbsp;<span class="value"><?= wc_price( $price_min ) ?></span><br>
+                                            <span class="label"><?= __( 'do', 'alexmoloni' ) ?></span>&nbsp;<span class="value"><?= wc_price( $price_max ) ?></span>
                                         </div>
 									<?php else: ?>
                                         <h4 class="heading-4 price"><?= wc_price( $product->get_price() ) ?></h4>
@@ -122,9 +122,11 @@ function amProductsGrid( $options = null ) {
                                 </div>
                                 <div class="btns-wrap">
 									<?php if ( $product->is_type( 'simple' ) ): ?>
-										<?php amAddToCartBtn( [
-											'product' => $product
-										] ); ?>
+										<?php if ( $product->is_in_stock() ): ?>
+											<?php amAddToCartBtn( [
+												'product' => $product
+											] ); ?>
+										<?php endif; ?>
                                         <a class="btn-cta-2 btn-small" href="<?= get_permalink( $product->get_id() ); ?>"><?= __( 'Szczegóły', 'alexmoloni' ) ?></a>
 									<?php elseif ( $has_sizes || $has_pieces ): ?>
                                         <a class="btn-cta-2 btn-small" href="<?= get_permalink( $product->get_id() ); ?>"><?= __( 'Wybierz rozmiar', 'alexmoloni' ) ?></a>
