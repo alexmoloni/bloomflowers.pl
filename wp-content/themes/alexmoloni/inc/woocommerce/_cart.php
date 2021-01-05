@@ -10,12 +10,12 @@ function amAddToCartCB() {
 
 	$items = $_POST['items'] ?? false;
 	if ( ! $items ) {
-		die('no items');
+		die( 'no items' );
 	}
 	$cart_key = '';
-	$items          = stripslashes( html_entity_decode( $items ) );
-	$items          = json_decode($items, true);
-	foreach ($items as $item) {
+	$items    = stripslashes( html_entity_decode( $items ) );
+	$items    = json_decode( $items, true );
+	foreach ( $items as $item ) {
 		$product_id              = intval( sanitize_title( $item['productId'] ) );
 		$quantity                = intval( sanitize_title( $item['quantity'] ) );
 		$variation_id            = intval( sanitize_title( $item['variationId'] ) );
@@ -56,27 +56,53 @@ function amRemoveCartCB() {
 	}
 
 	$product_id = $_POST['prodId'] ?? false;
-	$product_id = sanitize_title($product_id);
-	$product_id = intval($product_id);
+	$product_id = sanitize_title( $product_id );
+	$product_id = intval( $product_id );
 
-	$product_cart_id = WC()->cart->generate_cart_id( $product_id );
-	$cart_item_key = WC()->cart->find_product_in_cart( $product_cart_id );
-	if ( $cart_item_key ) {
-		$success = WC()->cart->remove_cart_item( $cart_item_key );
-		if ($success) {
-			ob_start();
-			amMiniCart();
-			$mini_cart_html = ob_get_clean();
+	$success = false;
+	foreach ( WC()->cart->get_cart() as $key => $item ) {
 
-			$response = [
-				'mini_cart_html' => $mini_cart_html,
-				'cart_count'     => Woocommerce::getCartCount()
-			];
-
-			echo json_encode($response);
-			die();
+		if ( $item['product_id'] == $product_id  ) {
+			$success = WC()->cart->remove_cart_item( $key );
+			break;
+		}
+		//for variable products
+		if (isset($item['variation_id']) && $item['variation_id'] === $product_id) {
+			$success = WC()->cart->remove_cart_item( $key );
 		}
 	}
+	if ( $success ) {
+		ob_start();
+		amMiniCart();
+		$mini_cart_html = ob_get_clean();
+
+		$response = [
+			'mini_cart_html' => $mini_cart_html,
+			'cart_count'     => Woocommerce::getCartCount()
+		];
+
+		echo json_encode( $response );
+		die();
+	}
+
+//	if ( $cart_item_key ) {
+//		echo ' p2';
+//		$success = WC()->cart->remove_cart_item( $cart_item_key );
+//		var_dump( $success );
+//		if ( $success ) {
+//			ob_start();
+//			amMiniCart();
+//			$mini_cart_html = ob_get_clean();
+//
+//			$response = [
+//				'mini_cart_html' => $mini_cart_html,
+//				'cart_count'     => Woocommerce::getCartCount()
+//			];
+//
+//			echo json_encode( $response );
+//			die();
+//		}
+//	}
 	echo 'cant remove item from cart';
 	die();
 

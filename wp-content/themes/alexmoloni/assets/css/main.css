@@ -8127,8 +8127,6 @@ header.main-header .main-navigation .menu-item-has-children {
   --loader-color: #fff;
   position: relative;
   overflow: hidden; }
-  .am-cart-btn.is-buy-now-btn {
-    --loader-color: #d82069; }
   .am-cart-btn .btn {
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
@@ -8149,6 +8147,12 @@ header.main-header .main-navigation .menu-item-has-children {
     position: absolute;
     bottom: 0;
     left: 0; }
+  .am-cart-btn.is-buy-now-btn {
+    --loader-color: #d82069; }
+    .am-cart-btn.is-buy-now-btn .btn.loading {
+      opacity: 0.5;
+      background-color: #fff !important;
+      color: #d82069 !important; }
   .am-cart-btn.item-added-to-cart .btn-add-to-cart {
     opacity: 0;
     visibility: hidden; }
