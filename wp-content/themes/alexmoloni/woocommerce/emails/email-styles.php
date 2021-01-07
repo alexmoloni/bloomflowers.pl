@@ -260,6 +260,7 @@ $text_lighter_40 = wc_hex_lighter( $text, 40 );
     width: 60px;
     height: auto;
     margin: 0;
+    max-width: none;
     }
 
     .order-details-table {
@@ -327,11 +328,11 @@ $text_lighter_40 = wc_hex_lighter( $text, 40 );
     }
 
     .wc-bacs-bank-details {
-        padding-left: 0;
+    padding-left: 0;
     }
     .wc-bacs-bank-details li {
 
-        list-style-type: none;
+    list-style-type: none;
     }
 
 

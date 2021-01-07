@@ -801,52 +801,79 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function handleChangeVariation() {
-  var inputs = document.querySelectorAll('.js-change-variation');
+var inputs = document.querySelectorAll('.js-change-variation');
 
-  var _iterator = _createForOfIteratorHelper(inputs),
-      _step;
+function updatePriceDiv(price) {
+  var priceDiv = document.querySelector('.col-details .woocommerce-Price-amount bdi').childNodes[1];
+  priceDiv.nodeValue = Number(price).toFixed(2);
+}
+
+function updateBuyBtns(newVariationId) {
+  var buyBtns = document.querySelectorAll('a[data-variation-id]');
+
+  if (buyBtns.length) {
+    var _iterator = _createForOfIteratorHelper(buyBtns),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var btn = _step.value;
+        btn.dataset.variationId = newVariationId;
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }
+}
+
+function handleChangeVariation() {
+  if (!inputs) {
+    return;
+  }
+
+  var _iterator2 = _createForOfIteratorHelper(inputs),
+      _step2;
 
   try {
     var _loop = function _loop() {
-      var input = _step.value;
+      var input = _step2.value;
       input.addEventListener('change', function () {
         var variationPrice = input.dataset.variationPrice;
         var variationId = input.dataset.variationId;
-        var priceDiv = input.closest('.col-details').querySelector(' .woocommerce-Price-amount bdi').childNodes[1];
-        priceDiv.nodeValue = Number(variationPrice).toFixed(2);
-        var buyBtns = document.querySelectorAll('a[data-variation-id]');
-
-        if (buyBtns.length) {
-          var _iterator2 = _createForOfIteratorHelper(buyBtns),
-              _step2;
-
-          try {
-            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-              var btn = _step2.value;
-              btn.dataset.variationId = variationId;
-            }
-          } catch (err) {
-            _iterator2.e(err);
-          } finally {
-            _iterator2.f();
-          }
-        }
+        updatePriceDiv(variationPrice);
+        updateBuyBtns(variationId);
       });
     };
 
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
       _loop();
     }
   } catch (err) {
-    _iterator.e(err);
+    _iterator2.e(err);
   } finally {
-    _iterator.f();
+    _iterator2.f();
   }
+}
+
+function initVariationPrice() {
+  if (!inputs) {
+    return;
+  }
+
+  var inputChecked = Array.from(inputs).find(function (input) {
+    return input.checked;
+  });
+  var variationPrice = inputChecked.dataset.variationPrice;
+  var variationId = inputChecked.dataset.variationId;
+  updatePriceDiv(variationPrice);
+  updateBuyBtns(variationId);
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   handleChangeVariation();
+  initVariationPrice();
 });
 
 /***/ }),
