@@ -1,3 +1,9 @@
 .am-pagination {
+    @include basicMarginTop(25);
+    @include basicFontSize(18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 15px;
 
 }

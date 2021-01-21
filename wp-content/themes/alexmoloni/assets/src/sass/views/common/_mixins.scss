@@ -26,3 +26,14 @@
     }
 
 }
+
+@mixin labelOnImage() {
+    color: #fff;
+    @include basicVwProperty(border-radius, 10);
+    text-transform: uppercase;
+    font-family: $font1;
+    font-weight: 300;
+    @include basicFontSize(13);
+    @include basicPaddingTopBottom(4);
+    @include basicPaddingLeftRight(8);
+}

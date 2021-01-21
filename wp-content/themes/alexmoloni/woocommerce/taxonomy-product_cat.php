@@ -23,6 +23,10 @@ amShopBreadcrumb();
 						'products_to_show' => 'custom_query',
 						'products'         => $products
 					] ) ?>
+					<?php amPagination( [
+						'paged' => 'paged',
+						'query' => $wp_query
+					] ); ?>
                 </div>
             </div>
 

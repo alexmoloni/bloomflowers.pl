@@ -1,17 +1,13 @@
 .am-product-labels-row {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     .label {
-        color: #fff;
-        @include basicVwProperty(border-radius, 10);
-        text-transform: uppercase;
-        font-family: $font1;
-        font-weight: 300;
-        @include basicFontSize(13);
-        @include basicPaddingTopBottom(4);
-        @include basicPaddingLeftRight(8);
+        @include labelOnImage();
         @include basicMargin(right, 10);
+        @include basicMarginBottom(10);
+
 
         &:last-child {
             @include basicMargin(right, 0);
@@ -28,7 +24,21 @@
         background-color: $color4;
     }
 
-    .label.sold-out {
-        background-color: $color2a;
+    .label.on-sale {
+        background-color: #d90357;
+        color: #fff;
+        display: flex;
+        align-items: center;
+
+        img {
+            @include basicWidth(12);
+            @include basicHeight(12);
+            object-fit: contain;
+            object-position: center;
+            @include basicMarginLeft(5);
+
+        }
     }
+
+
 }

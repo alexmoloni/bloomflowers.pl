@@ -45,11 +45,34 @@ body.single-product {
 
                 }
 
+                .price-wrap {
+                    @include basicMarginBottom30();
+
+
+                    &.on-sale {
+                        display: flex;
+                        align-items: flex-end;
+                    }
+
+                    .regular-price {
+                        @include basicMarginRight(14);
+                        position: relative;
+                        text-decoration: line-through;
+                        color: $colorGrey1;
+                        @include basicFontSize(17);
+
+
+                        &.hidden {
+                            display: none;
+                        }
+
+
+                    }
+                }
 
                 .price {
                     font-weight: bold;
                     text-transform: uppercase;
-                    @include basicMarginBottom30();
                     @include basicFontSize(24);
 
                 }
@@ -75,11 +98,6 @@ body.single-product {
                     }
                 }
 
-                .sold-out-text {
-                    @include basicMarginTop(25);
-
-                }
-
                 .categories-wrap {
                     @include basicMarginTop(30);
 
@@ -101,7 +119,7 @@ body.single-product {
 
                 }
 
-                .am-complementary-products{
+                .am-complementary-products {
                     @include basicMarginTop(30);
                     @include basicPaddingTop(20);
                     border-top: 1px solid $colorBorders;

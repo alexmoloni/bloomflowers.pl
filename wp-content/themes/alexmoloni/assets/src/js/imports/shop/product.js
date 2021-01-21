@@ -1,8 +1,22 @@
 const inputs = document.querySelectorAll('.js-change-variation');
 
-function updatePriceDiv(price) {
-    const priceDiv = document.querySelector('.col-details .woocommerce-Price-amount bdi').childNodes[ 1 ];
+function updatePriceDiv(price, regularPrice = false, onSale = false) {
+    const priceDiv = document.querySelector('.col-details .price .woocommerce-Price-amount bdi').childNodes[ 1 ];
     priceDiv.nodeValue = Number(price).toFixed(2);
+    const regularPriceWrap = document.querySelector('.col-details .regular-price');
+
+    if ( regularPriceWrap && regularPrice ) {
+
+        const regularPriceDiv = regularPriceWrap.querySelector('.woocommerce-Price-amount bdi').childNodes[ 1 ];
+        if ( onSale ) {
+            regularPriceWrap.classList.remove('hidden');
+            regularPriceDiv.nodeValue = Number(regularPrice).toFixed(2);
+        }
+        else {
+            regularPriceWrap.classList.add('hidden');
+        }
+
+    }
 }
 
 function updateBuyBtns(newVariationId) {
@@ -22,15 +36,21 @@ function handleChangeVariation() {
     for ( let input of inputs ) {
         input.addEventListener('change', () => {
             const variationPrice = input.dataset.variationPrice;
+            let onSale = false;
+            if ( typeof input.dataset.onSale !== 'undefined' && input.dataset.onSale === '1' ) {
+                onSale = true;
+            }
             const variationId = input.dataset.variationId;
-            updatePriceDiv(variationPrice);
+            const variationRegularPrice = input.dataset.variationRegularPrice;
+
+            updatePriceDiv(variationPrice, variationRegularPrice, onSale);
             updateBuyBtns(variationId);
         })
     }
 }
 
 function initVariationPrice() {
-    if ( !inputs ) {
+    if ( inputs.length < 1 || !inputs ) {
         return;
     }
     const inputChecked = Array.from(inputs).find((input) => {
@@ -39,7 +59,12 @@ function initVariationPrice() {
 
     const variationPrice = inputChecked.dataset.variationPrice;
     const variationId = inputChecked.dataset.variationId;
-    updatePriceDiv(variationPrice);
+    let onSale = false;
+    if ( typeof inputChecked.dataset.onSale !== 'undefined' && inputChecked.dataset.onSale === '1' ) {
+        onSale = true;
+    }
+    const variationRegularPrice = inputChecked.dataset.variationRegularPrice;
+    updatePriceDiv(variationPrice, variationRegularPrice, onSale);
     updateBuyBtns(variationId);
 
 }

@@ -46,10 +46,10 @@ function formatDateLong(dateObj) {
 }
 
 function formatDateShort(dateObj) {
-    let month = dateObj.getMonth() + 1;
+    let month = String(dateObj.getMonth() + 1).padStart(2, '0');
     let day = String(dateObj.getDate()).padStart(2, '0');
     let year = dateObj.getFullYear();
-    return `${day} / ${month} / ${year}`;
+    return `${year}-${month}-${day}`;
 }
 
 

@@ -321,10 +321,10 @@ function formatDateLong(dateObj) {
 }
 
 function formatDateShort(dateObj) {
-  var month = dateObj.getMonth() + 1;
+  var month = String(dateObj.getMonth() + 1).padStart(2, '0');
   var day = String(dateObj.getDate()).padStart(2, '0');
   var year = dateObj.getFullYear();
-  return "".concat(day, " / ").concat(month, " / ").concat(year);
+  return "".concat(year, "-").concat(month, "-").concat(day);
 }
 
 var sanitizeHtml = function sanitizeHtml(string) {
@@ -804,8 +804,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 var inputs = document.querySelectorAll('.js-change-variation');
 
 function updatePriceDiv(price) {
-  var priceDiv = document.querySelector('.col-details .woocommerce-Price-amount bdi').childNodes[1];
+  var regularPrice = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var onSale = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var priceDiv = document.querySelector('.col-details .price .woocommerce-Price-amount bdi').childNodes[1];
   priceDiv.nodeValue = Number(price).toFixed(2);
+  var regularPriceWrap = document.querySelector('.col-details .regular-price');
+
+  if (regularPriceWrap && regularPrice) {
+    var regularPriceDiv = regularPriceWrap.querySelector('.woocommerce-Price-amount bdi').childNodes[1];
+
+    if (onSale) {
+      regularPriceWrap.classList.remove('hidden');
+      regularPriceDiv.nodeValue = Number(regularPrice).toFixed(2);
+    } else {
+      regularPriceWrap.classList.add('hidden');
+    }
+  }
 }
 
 function updateBuyBtns(newVariationId) {
@@ -841,8 +855,15 @@ function handleChangeVariation() {
       var input = _step2.value;
       input.addEventListener('change', function () {
         var variationPrice = input.dataset.variationPrice;
+        var onSale = false;
+
+        if (typeof input.dataset.onSale !== 'undefined' && input.dataset.onSale === '1') {
+          onSale = true;
+        }
+
         var variationId = input.dataset.variationId;
-        updatePriceDiv(variationPrice);
+        var variationRegularPrice = input.dataset.variationRegularPrice;
+        updatePriceDiv(variationPrice, variationRegularPrice, onSale);
         updateBuyBtns(variationId);
       });
     };
@@ -858,7 +879,7 @@ function handleChangeVariation() {
 }
 
 function initVariationPrice() {
-  if (!inputs) {
+  if (inputs.length < 1 || !inputs) {
     return;
   }
 
@@ -867,7 +888,14 @@ function initVariationPrice() {
   });
   var variationPrice = inputChecked.dataset.variationPrice;
   var variationId = inputChecked.dataset.variationId;
-  updatePriceDiv(variationPrice);
+  var onSale = false;
+
+  if (typeof inputChecked.dataset.onSale !== 'undefined' && inputChecked.dataset.onSale === '1') {
+    onSale = true;
+  }
+
+  var variationRegularPrice = inputChecked.dataset.variationRegularPrice;
+  updatePriceDiv(variationPrice, variationRegularPrice, onSale);
   updateBuyBtns(variationId);
 }
 
@@ -1046,7 +1074,8 @@ function handleAddToCart() {
       return;
     }
 
-    ev.preventDefault();
+    ev.preventDefault ? ev.preventDefault() : ev.returnValue = false; //for IE
+
     var items = [];
     var btn = ev.target;
     var isBuyNowBtn = btn.matches('.js-buy-now-btn');

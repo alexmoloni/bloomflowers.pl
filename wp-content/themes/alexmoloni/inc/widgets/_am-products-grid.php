@@ -78,8 +78,7 @@ function amProductsGrid( $options = null ) {
 				foreach ( $products as $product_id ):
 					/** @var WC_Product $product */
 					$product = wc_get_product( $product_id );
-					$recommended = Woocommerce::isProductRecommended( $product_id );
-					$is_product_hit = Woocommerce::isProductHit( $product_id );
+
 					$has_sizes = Woocommerce::productHasSizesAttribute( $product->get_id() );
 					$has_pieces = Woocommerce::productHasPiecesAttribute( $product->get_id() );
 					$is_variable = Woocommerce::isVariableProduct( $product );
@@ -113,8 +112,8 @@ function amProductsGrid( $options = null ) {
                                     <h3 class="title"><?= $product->get_title() ?></h3>
 									<?php if ( $is_variable ): ?>
                                         <div class="price-wrap-variable">
-                                            <span class="label"><?= __( 'od', 'alexmoloni' ) ?></span>&nbsp;<span class="value"><?= wc_price( $price_min ) ?></span><br>
-                                            <span class="label"><?= __( 'do', 'alexmoloni' ) ?></span>&nbsp;<span class="value"><?= wc_price( $price_max ) ?></span>
+                                            <span class="label"><?= __('od', 'alexmoloni') ?></span>&nbsp;<span class="value"><?= wc_price( $price_min ) ?></span><br>
+                                            <span class="label"><?= __('do', 'alexmoloni') ?></span>&nbsp;<span class="value"><?= wc_price( $price_max ) ?></span>
                                         </div>
 									<?php else: ?>
                                         <h4 class="heading-4 price"><?= wc_price( $product->get_price() ) ?></h4>

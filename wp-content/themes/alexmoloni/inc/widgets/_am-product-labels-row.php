@@ -3,10 +3,12 @@
 use alexito\Woocommerce;
 
 function amProductLabelsRow( $product_id ) {
-	$recommended    = get_field( 'recommended', $product_id );
+	$recommended    = Woocommerce::isProductRecommended( $product_id );
 	$is_product_hit = Woocommerce::isProductHit( $product_id );
-	$is_in_stock = Woocommerce::isInStock( $product_id );
-	if ( ! $recommended && ! $is_product_hit ) {
+	$product        = wc_get_product( $product_id );
+	$on_sale        = Woocommerce::isOnSale( $product );
+
+	if ( ! $recommended && ! $is_product_hit && ! $on_sale ) {
 		return;
 	}
 	?>
@@ -17,8 +19,11 @@ function amProductLabelsRow( $product_id ) {
 		<?php if ( $is_product_hit ): ?>
             <span class="label new"><?= __( 'Hit', 'alexmoloni' ) ?></span>
 		<?php endif; ?>
-        <?php if (!$is_in_stock): ?>
-            <span class="label sold-out"><?= __( 'Wyprzedany', 'alexmoloni' ) ?></span>
-        <?php endif; ?>
+		<?php if ( $on_sale ): ?>
+            <span class="label on-sale">
+                                    <span class="text"><?= __( 'Sale', 'alexmoloni' ) ?></span>
+                                    <img src="<?= get_field( 'promo_icon', 'options' )['sizes']['thumbnail']; ?>" alt="">
+                                </span>
+		<?php endif; ?>
     </div>
 <?php }

@@ -19,6 +19,10 @@ class Woocommerce {
 		return wc_price( $product->get_price() );
 	}
 
+	public static function getRegularPriceBeforePromo( $product ) {
+		return wc_price($product->get_regular_price() );
+	}
+
 	public static function getStrefa2ShippingZoneId() {
 		return 3;
 	}
@@ -123,6 +127,10 @@ class Woocommerce {
 
 	public static function isVariableProduct( $product ) {
 		return $product->is_type( 'variable' );
+	}
+
+	public static function isOnSale( $product ) {
+		return $product->is_on_sale();
 	}
 
 	public static function checkProductHasAttribute( $attr_name, $prod_id ) {

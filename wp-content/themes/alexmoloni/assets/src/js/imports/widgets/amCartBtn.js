@@ -9,7 +9,7 @@ function handleAddToCart() {
         if ( !ev.target.matches('.js-ajax-add-to-cart') ) {
             return;
         }
-        ev.preventDefault();
+        ev.preventDefault ? ev.preventDefault() : (ev.returnValue = false); //for IE
         const items = [];
         const btn = ev.target;
         const isBuyNowBtn = btn.matches('.js-buy-now-btn');

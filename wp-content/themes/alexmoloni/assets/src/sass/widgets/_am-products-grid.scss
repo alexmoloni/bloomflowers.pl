@@ -33,9 +33,14 @@
             .img-link {
                 display: flex;
                 overflow: hidden;
-                @include fitFigurePictureImg();
                 position: relative;
                 @include basicTransition();
+
+                figure {
+                    width: 100%;
+                    height: 100%;
+                    @include fitFigurePictureImg();
+                }
 
                 &:hover {
                     @include basicLighten();
@@ -46,22 +51,8 @@
                     position: absolute;
                     top: 5%;
                     left: 8%;
-
-
-                    .label {
-                        border-radius: 5px;
-                        @include basicFontSize(11);
-                        @include basicPaddingTopBottom(3);
-                        @include basicPaddingLeftRight(5);
-                        @include basicMargin(right, 8);
-
-                        &:last-child {
-                            @include basicMargin(right, 0);
-                        }
-
-                    }
-
                 }
+
             }
 
             .content-wrap {
@@ -172,9 +163,7 @@
 
     &.show-company-sets {
         .am-product-item {
-            .img-link {
 
-            }
 
             .content-product-with-sizes {
                 @include basicFontSize(13);
