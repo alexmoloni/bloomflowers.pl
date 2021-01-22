@@ -22,8 +22,15 @@ function init() {
         yearRange: "-100:+20",
         maxDate: '+1Y',
         beforeShowDay: function (date) {
+            const month = date.getMonth();
+            const dayInMonth = date.getDate();
             const day = date.getDay();
-            return [(day !== 0), ''];
+            const isSunday = day === 0;
+            const isValentines = dayInMonth === 14 && month === 1;
+            if (isValentines) {
+                return [true, '', 'Valentines!'];
+            }
+            return [(!isSunday), ''];
         },
         onSelect: function (dateText) {
             const dateSelected = new Date(dateText);

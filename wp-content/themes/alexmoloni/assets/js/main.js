@@ -1265,8 +1265,17 @@ function init() {
     yearRange: "-100:+20",
     maxDate: '+1Y',
     beforeShowDay: function beforeShowDay(date) {
+      var month = date.getMonth();
+      var dayInMonth = date.getDate();
       var day = date.getDay();
-      return [day !== 0, ''];
+      var isSunday = day === 0;
+      var isValentines = dayInMonth === 14 && month === 1;
+
+      if (isValentines) {
+        return [true, '', 'Valentines!'];
+      }
+
+      return [!isSunday, ''];
     },
     onSelect: function onSelect(dateText) {
       var dateSelected = new Date(dateText);
