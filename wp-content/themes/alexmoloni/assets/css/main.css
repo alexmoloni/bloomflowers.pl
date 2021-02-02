@@ -307,6 +307,9 @@ img, video {
 .pink {
   color: #d82069 !important; }
 
+.color-warning {
+  color: #d00a3a; }
+
 @-webkit-keyframes scale {
   30% {
     -webkit-transform: scale(1.4);
@@ -8545,9 +8548,6 @@ header.main-header .main-navigation .menu-item-has-children {
         margin-right: 7.5px; } }
   .am-delivery-date .info-box.hidden {
     display: none; }
-
-.am-delivery-date .extra-price-info {
-  color: #d00a3a; }
 
 .am-delivery-date .info-selected-date {
   font-weight: bold; }

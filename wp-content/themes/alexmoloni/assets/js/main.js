@@ -1253,6 +1253,7 @@ var infoSelectedDate = document.querySelector('.info-selected-date');
 var $calendar = $('#datetimepicker');
 var $hourSelect = $('#delivery-hour');
 var $inputHiddenDeliveryDate = $('input[name=delivery_date]');
+var $inputShippingPostCode = $('input[name=shipping_postcode]');
 
 function init() {
   $('body').trigger('update_checkout');
@@ -1350,6 +1351,17 @@ function showInfoSelectedDate() {
 
 function handleHourChange() {
   $hourSelect.on('change', function (ev) {
+    if (!$inputShippingPostCode.val()) {
+      var placeholderOption = $hourSelect.find("option").first();
+      placeholderOption.prop("selected", true);
+      document.querySelectorAll('.info-box').forEach(function (el) {
+        return el.classList.add('hidden');
+      });
+      document.querySelector('.insert-post-code-info').classList.remove('hidden');
+      return false;
+    }
+
+    document.querySelector('.insert-post-code-info').classList.add('hidden');
     var hourSelect = $hourSelect.get(0);
     _wcLoader__WEBPACK_IMPORTED_MODULE_2__["default"].add(wrap);
     var hours = hourSelect.value;

@@ -28,7 +28,9 @@ function amDeliveryDate( $options = null ) {
 			<?php endforeach; ?>
         </select>
         <div class="extra-info-wrap">
-            <div class="extra-price-info info-box hidden">
+            <div class="insert-post-code-info info-box hidden color-warning">
+		        <?= get_field( 'insert_post_code_info', 'options' ); ?>Insert post code first</div>
+            <div class="extra-price-info info-box hidden color-warning">
 				<?= get_field( 'extra_price_info', 'options' ); ?></div>
             <div class="info-selected-date info-box hidden">
 				<?= __( 'Wybrano', 'alexmoloni' ) ?>:

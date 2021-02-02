@@ -10,6 +10,7 @@ const infoSelectedDate = document.querySelector('.info-selected-date');
 const $calendar = $('#datetimepicker');
 const $hourSelect = $('#delivery-hour');
 const $inputHiddenDeliveryDate = $('input[name=delivery_date]');
+const $inputShippingPostCode = $('input[name=shipping_postcode]');
 
 function init() {
     $('body').trigger('update_checkout');
@@ -27,7 +28,7 @@ function init() {
             const day = date.getDay();
             const isSunday = day === 0;
             const isValentines = dayInMonth === 14 && month === 1;
-            if (isValentines) {
+            if ( isValentines ) {
                 return [true, '', 'Valentines!'];
             }
             return [(!isSunday), ''];
@@ -88,6 +89,15 @@ function showInfoSelectedDate() {
 
 function handleHourChange() {
     $hourSelect.on('change', function (ev) {
+        if ( !$inputShippingPostCode.val() ) {
+            const placeholderOption = $hourSelect.find("option").first();
+            placeholderOption.prop("selected", true);
+            document.querySelectorAll('.info-box').forEach(el => el.classList.add('hidden'));
+            document.querySelector('.insert-post-code-info').classList.remove('hidden');
+
+            return false;
+        }
+        document.querySelector('.insert-post-code-info').classList.add('hidden');
         const hourSelect = $hourSelect.get(0);
         wcLoader.add(wrap);
         const hours = hourSelect.value;

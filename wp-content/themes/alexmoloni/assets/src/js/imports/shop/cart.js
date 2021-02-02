@@ -10,6 +10,7 @@ function addToCart(items) {
     const formData = new FormData;
     formData.append('items', items);
     formData.append('action', 'am_add_to_cart');
+
     formData.append('nonce', wpRest.nonce);
 
     return wpRestApi.post('', formData).then(resp => {
