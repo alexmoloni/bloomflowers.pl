@@ -16,9 +16,9 @@ function amCardForProduct( $prod_id ) {
 function amCardForProductCB() {
 	$card_text = $_POST['card_text'] ?? '';
 	$nonce     = $_POST['nonce'] ?? '';
-	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
-		die ();
-	}
+//	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
+//		die ();
+//	}
 	$card_text = esc_html( $card_text );
 	$prod_id   = $_POST['prod_id'] ?? null;
 	$prod_id   = absint( $prod_id );

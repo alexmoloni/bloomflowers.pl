@@ -4,9 +4,9 @@ use alexito\Woocommerce;
 
 function amAddToCartCB() {
 	$nonce = $_POST['nonce'] ?? '';
-	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
-		die ( 'nonce' );
-	}
+//	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
+//		die ( 'nonce' );
+//	}
 
 	$items = $_POST['items'] ?? false;
 	if ( ! $items ) {
@@ -51,9 +51,9 @@ add_action( "wp_ajax_nopriv_am_add_to_cart", "amAddToCartCB" );
 
 function amRemoveCartCB() {
 	$nonce = $_POST['nonce'] ?? '';
-	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
-		die ( 'nonce' );
-	}
+//	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
+//		die ( 'nonce' );
+//	}
 
 	$product_id = $_POST['prodId'] ?? false;
 	$product_id = sanitize_title( $product_id );
@@ -113,9 +113,9 @@ add_action( "wp_ajax_nopriv_am_remove_cart", "amRemoveCartCB" );
 
 function amRefreshCartDivsCB() {
 	$nonce = $_POST['nonce'] ?? '';
-	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
-		die ( 'nonce' );
-	}
+//	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
+//		die ( 'nonce' );
+//	}
 
 	ob_start();
 	amMiniCart();

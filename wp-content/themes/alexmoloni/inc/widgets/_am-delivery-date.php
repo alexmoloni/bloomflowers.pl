@@ -114,9 +114,9 @@ function checkoutChangeHour() {
 	$hours    = $_POST['hours'] ?? '';
 	$is_extra = $_POST['is_extra'] ?? 0;
 	$nonce    = $_POST['nonce'] ?? '';
-	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
-		die ();
-	}
+//	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
+//		die ();
+//	}
 	$hours    = esc_html( $hours );
 	$is_extra = (int) esc_html( $is_extra );
 

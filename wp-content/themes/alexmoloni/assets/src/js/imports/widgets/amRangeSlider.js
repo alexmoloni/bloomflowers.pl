@@ -55,7 +55,7 @@ function init() {
         const input_price_min = widget.querySelector('input[name="filter_price_min"]');
         const input_price_max = widget.querySelector('input[name="filter_price_max"]');
 
-        console.log(widget);
+
         if (widget.matches('.show-interactive-text-inputs')) {
             input_price_min.addEventListener('change', function () {
                 slider.noUiSlider.set([this.value, null]);
