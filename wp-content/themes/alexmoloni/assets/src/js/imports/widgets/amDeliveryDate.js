@@ -12,6 +12,18 @@ const $hourSelect = $('#delivery-hour');
 const $inputHiddenDeliveryDate = $('input[name=delivery_date]');
 const $inputShippingPostCode = $('input[name=shipping_postcode]');
 
+function isDayAndMonth(date, day, month) {
+    const dateMonth = date.getMonth();
+    const dateDay = date.getDate();
+    return dateDay === day && dateMonth === month - 1;
+}
+
+function isValentines(date) {
+    const month = date.getMonth();
+    const dayInMonth = date.getDate();
+    return dayInMonth === 14 && month === 1;
+}
+
 function init() {
     $('body').trigger('update_checkout');
 
@@ -23,15 +35,15 @@ function init() {
         yearRange: "-100:+20",
         maxDate: '+1Y',
         beforeShowDay: function (date) {
-            const month = date.getMonth();
-            const dayInMonth = date.getDate();
+
             const day = date.getDay();
             const isSunday = day === 0;
-            const isValentines = dayInMonth === 14 && month === 1;
-            if ( isValentines ) {
-                return [true, '', 'Valentines!'];
-            }
-            return [(!isSunday), ''];
+            //if need to disable sundays or enable valentines
+            // if ( isValentines(date) ) {
+            //     return [true, '', 'Valentines!'];
+            // }
+            // return [(!isSunday), ''];
+            return [true, ''];
         },
         onSelect: function (dateText) {
             const dateSelected = new Date(dateText);
@@ -51,11 +63,12 @@ function afterInitDatepicker() {
 function handleChangeDate(dateSelected) {
     populateHiddenInput(dateSelected);
     showInfoSelectedDate();
+    const today = new Date();
+    const selectedSunday = dateSelected.getDay() === 0;
 
     const currentHour = helpers.getCurrentHour();
+    const options = $hourSelect.find('option');
     if ( allowSameDayDelivery ) {
-        const today = new Date();
-        const options = $hourSelect.find('option');
         if ( helpers.compareDaysInDates(today, dateSelected) ) {
             for ( let option of options ) {
                 const hourStart = parseInt(option.dataset.hourStart);
@@ -66,6 +79,26 @@ function handleChangeDate(dateSelected) {
             for ( let option of options ) {
                 option.disabled = false;
             }
+        }
+    }
+
+    //disallow hours for valentines day
+    if ( selectedSunday ) {
+        for ( let option of options ) {
+            const hourStart = parseInt(option.dataset.hourStart);
+            if ( hourStart === 16 || hourStart === 20 ) {
+                const placeholderOption = $hourSelect.find("option").first();
+                placeholderOption.prop("selected", true);
+                option.disabled = true;
+                option.style.display = 'none';
+            }
+        }
+    }
+    else {
+        for ( let option of options ) {
+            const hourStart = parseInt(option.dataset.hourStart);
+            option.disabled = false;
+            option.style.display = 'block';
         }
     }
 
