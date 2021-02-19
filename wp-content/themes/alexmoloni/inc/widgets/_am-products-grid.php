@@ -113,7 +113,7 @@ function amProductsGrid( $options = null ) {
 									<?php if ( $is_variable ): ?>
                                         <div class="price-wrap-variable">
                                             <span class="label"><?= __('od', 'alexmoloni') ?></span>&nbsp;<span class="value"><?= wc_price( $price_min ) ?></span><br>
-                                            <span class="label"><?= __('do', 'alexmoloni') ?></span>&nbsp;<span class="value"><?= wc_price( $price_max ) ?></span>
+<!--                                            <span class="label">--><?//= __('do', 'alexmoloni') ?><!--</span>&nbsp;<span class="value">--><?//= wc_price( $price_max ) ?><!--</span>-->
                                         </div>
 									<?php else: ?>
                                         <h4 class="heading-4 price"><?= wc_price( $product->get_price() ) ?></h4>
