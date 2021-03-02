@@ -225,7 +225,7 @@ add_action( 'woocommerce_email_order_meta', 'addAmDeliveryDateToEmail', 10, 3 );
 
 function amAdminDeliveryDate( $order ) {
 	$order_id = $order->get_id();
-	$meta_key = get_post_meta( $order->get_id(), 'checkout-invoice-company', true );
+	$meta_key = get_post_meta( $order->get_id(), 'am_delivery_date', true );
 	if ( ! $meta_key ) {
 		echo '<h3>Nie podano daty dostawy</h3>';
 

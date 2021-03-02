@@ -5,7 +5,7 @@ function amProductCardInput( $options = null ) {
 	?>
     <div class="am-product-card-input">
         <h4 class="heading-5 heading"><?= get_field( 'product_card_label', 'options' ) ?></h4>
-        <textarea id="product-card" name="card_text"></textarea>
+        <textarea maxlength="170" id="product-card" name="card_text"></textarea>
     </div>
 <?php }
 
