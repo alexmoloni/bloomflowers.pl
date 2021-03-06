@@ -84,9 +84,23 @@ function handleChangeDate(dateSelected) {
 
     //disallow hours for valentines day
     if ( selectedSunday ) {
+        if (!isDayAndMonth(dateSelected, 7, 3)) {
+            for ( let option of options ) {
+                const hourStart = parseInt(option.dataset.hourStart);
+                if ( hourStart === 16 || hourStart === 20 ) {
+                    const placeholderOption = $hourSelect.find("option").first();
+                    placeholderOption.prop("selected", true);
+                    option.disabled = true;
+                    option.style.display = 'none';
+                }
+            }
+        }
+
+    }
+    else if(isDayAndMonth(dateSelected, 8, 3)) {
         for ( let option of options ) {
             const hourStart = parseInt(option.dataset.hourStart);
-            if ( hourStart === 16 || hourStart === 20 ) {
+            if ( hourStart === 8 || hourStart === 10 ) {
                 const placeholderOption = $hourSelect.find("option").first();
                 placeholderOption.prop("selected", true);
                 option.disabled = true;
@@ -95,6 +109,7 @@ function handleChangeDate(dateSelected) {
         }
     }
     else {
+
         for ( let option of options ) {
             const hourStart = parseInt(option.dataset.hourStart);
             option.disabled = false;

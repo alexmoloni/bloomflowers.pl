@@ -11,7 +11,7 @@ function addToCart(items) {
     formData.append('items', items);
     formData.append('action', 'am_add_to_cart');
 
-    formData.append('nonce', wpRest.nonce);
+    // formData.append('nonce', wpRest.nonce);
     return wpRestApi.post('', formData).then(resp => {
         return resp.data;
     });

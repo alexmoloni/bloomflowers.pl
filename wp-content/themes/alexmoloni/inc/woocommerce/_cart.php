@@ -26,6 +26,7 @@ function amAddToCartCB() {
 		}
 		try {
 			$cart_key = WC()->cart->add_to_cart( $product_id, $quantity, $variation_id, [], $filtered_cart_item_data );
+//			WC()->session->set_customer_session_cookie(true);
 		} catch ( Exception $e ) {
 			die( $e->getMessage() );
 		}
@@ -42,6 +43,7 @@ function amAddToCartCB() {
 	];
 
 	echo json_encode( $response );
+//	echo 'alex';
 	die();
 }
 
@@ -62,12 +64,12 @@ function amRemoveCartCB() {
 	$success = false;
 	foreach ( WC()->cart->get_cart() as $key => $item ) {
 
-		if ( $item['product_id'] == $product_id  ) {
+		if ( $item['product_id'] == $product_id ) {
 			$success = WC()->cart->remove_cart_item( $key );
 			break;
 		}
 		//for variable products
-		if (isset($item['variation_id']) && $item['variation_id'] === $product_id) {
+		if ( isset( $item['variation_id'] ) && $item['variation_id'] === $product_id ) {
 			$success = WC()->cart->remove_cart_item( $key );
 		}
 	}
@@ -85,24 +87,6 @@ function amRemoveCartCB() {
 		die();
 	}
 
-//	if ( $cart_item_key ) {
-//		echo ' p2';
-//		$success = WC()->cart->remove_cart_item( $cart_item_key );
-//		var_dump( $success );
-//		if ( $success ) {
-//			ob_start();
-//			amMiniCart();
-//			$mini_cart_html = ob_get_clean();
-//
-//			$response = [
-//				'mini_cart_html' => $mini_cart_html,
-//				'cart_count'     => Woocommerce::getCartCount()
-//			];
-//
-//			echo json_encode( $response );
-//			die();
-//		}
-//	}
 	echo 'cant remove item from cart';
 	die();
 
@@ -112,7 +96,7 @@ add_action( "wp_ajax_am_remove_cart", "amRemoveCartCB" );
 add_action( "wp_ajax_nopriv_am_remove_cart", "amRemoveCartCB" );
 
 function amRefreshCartDivsCB() {
-	$nonce = $_POST['nonce'] ?? '';
+//	$nonce = $_POST['nonce'] ?? '';
 //	if ( ! wp_verify_nonce( $nonce, 'wpRestNonce' ) ) {
 //		die ( 'nonce' );
 //	}
