@@ -1304,6 +1304,8 @@ function handleChangeDate(dateSelected) {
   populateHiddenInput(dateSelected);
   showInfoSelectedDate();
   var today = new Date();
+  var tomorrow = new Date();
+  tomorrow.setDate(new Date().getDate() + 1);
   var selectedSunday = dateSelected.getDay() === 0;
   var currentHour = _helpers__WEBPACK_IMPORTED_MODULE_0__["default"].getCurrentHour();
   var options = $hourSelect.find('option');
@@ -1339,11 +1341,22 @@ function handleChangeDate(dateSelected) {
         _iterator2.f();
       }
     }
-  } //disallow hours for valentines day
+  } //if today is after 18:00 dont allow next day 8-10 && 10-14
 
 
-  if (selectedSunday) {
-    if (!isDayAndMonth(dateSelected, 7, 3)) {
+  if (currentHour >= 18 && _helpers__WEBPACK_IMPORTED_MODULE_0__["default"].compareDaysInDates(tomorrow, dateSelected)) {
+    options.each(function (i, option) {
+      var hourStart = parseInt(option.dataset.hourStart);
+
+      if (hourStart === 8 || hourStart === 10) {
+        var placeholderOption = $hourSelect.find("option").first();
+        placeholderOption.prop("selected", true);
+        option.disabled = true;
+        option.style.display = 'none';
+      }
+    });
+  } //on sundays disallow 16-20 and 20 - 00
+  else if (selectedSunday) {
       var _iterator3 = _createForOfIteratorHelper(options),
           _step3;
 
@@ -1365,50 +1378,50 @@ function handleChangeDate(dateSelected) {
       } finally {
         _iterator3.f();
       }
-    }
-  } else if (isDayAndMonth(dateSelected, 8, 3)) {
-    var _iterator4 = _createForOfIteratorHelper(options),
-        _step4;
+    } //on womens day disallow some hours
+    else if (isDayAndMonth(dateSelected, 8, 3)) {
+        var _iterator4 = _createForOfIteratorHelper(options),
+            _step4;
 
-    try {
-      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-        var _option3 = _step4.value;
+        try {
+          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+            var _option3 = _step4.value;
 
-        var _hourStart2 = parseInt(_option3.dataset.hourStart);
+            var _hourStart2 = parseInt(_option3.dataset.hourStart);
 
-        if (_hourStart2 === 8 || _hourStart2 === 10) {
-          var _placeholderOption = $hourSelect.find("option").first();
+            if (_hourStart2 === 8 || _hourStart2 === 10 || _hourStart2 === 12) {
+              var _placeholderOption = $hourSelect.find("option").first();
 
-          _placeholderOption.prop("selected", true);
+              _placeholderOption.prop("selected", true);
 
-          _option3.disabled = true;
-          _option3.style.display = 'none';
+              _option3.disabled = true;
+              _option3.style.display = 'none';
+            }
+          }
+        } catch (err) {
+          _iterator4.e(err);
+        } finally {
+          _iterator4.f();
+        }
+      } else {
+        var _iterator5 = _createForOfIteratorHelper(options),
+            _step5;
+
+        try {
+          for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+            var _option4 = _step5.value;
+
+            var _hourStart3 = parseInt(_option4.dataset.hourStart);
+
+            _option4.disabled = false;
+            _option4.style.display = 'block';
+          }
+        } catch (err) {
+          _iterator5.e(err);
+        } finally {
+          _iterator5.f();
         }
       }
-    } catch (err) {
-      _iterator4.e(err);
-    } finally {
-      _iterator4.f();
-    }
-  } else {
-    var _iterator5 = _createForOfIteratorHelper(options),
-        _step5;
-
-    try {
-      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-        var _option4 = _step5.value;
-
-        var _hourStart3 = parseInt(_option4.dataset.hourStart);
-
-        _option4.disabled = false;
-        _option4.style.display = 'block';
-      }
-    } catch (err) {
-      _iterator5.e(err);
-    } finally {
-      _iterator5.f();
-    }
-  }
 }
 
 function populateHiddenInput(date) {

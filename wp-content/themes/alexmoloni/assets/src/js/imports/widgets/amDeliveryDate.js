@@ -64,6 +64,8 @@ function handleChangeDate(dateSelected) {
     populateHiddenInput(dateSelected);
     showInfoSelectedDate();
     const today = new Date();
+    let tomorrow = new Date();
+    tomorrow.setDate(new Date().getDate()+1);
     const selectedSunday = dateSelected.getDay() === 0;
 
     const currentHour = helpers.getCurrentHour();
@@ -82,25 +84,37 @@ function handleChangeDate(dateSelected) {
         }
     }
 
-    //disallow hours for valentines day
-    if ( selectedSunday ) {
-        if (!isDayAndMonth(dateSelected, 7, 3)) {
-            for ( let option of options ) {
-                const hourStart = parseInt(option.dataset.hourStart);
-                if ( hourStart === 16 || hourStart === 20 ) {
-                    const placeholderOption = $hourSelect.find("option").first();
-                    placeholderOption.prop("selected", true);
-                    option.disabled = true;
-                    option.style.display = 'none';
-                }
+    //if today is after 18:00 dont allow next day 8-10 && 10-14
+    if (currentHour >= 18 && helpers.compareDaysInDates(tomorrow, dateSelected)) {
+        options.each((i, option) => {
+            const hourStart = parseInt(option.dataset.hourStart);
+            if ( hourStart === 8 || hourStart === 10 ) {
+                const placeholderOption = $hourSelect.find("option").first();
+                placeholderOption.prop("selected", true);
+                option.disabled = true;
+                option.style.display = 'none';
             }
-        }
+        })
 
     }
+
+    //on sundays disallow 16-20 and 20 - 00
+    else if ( selectedSunday ) {
+        for ( let option of options ) {
+            const hourStart = parseInt(option.dataset.hourStart);
+            if ( hourStart === 16 || hourStart === 20 ) {
+                const placeholderOption = $hourSelect.find("option").first();
+                placeholderOption.prop("selected", true);
+                option.disabled = true;
+                option.style.display = 'none';
+            }
+        }
+    }
+    //on womens day disallow some hours
     else if(isDayAndMonth(dateSelected, 8, 3)) {
         for ( let option of options ) {
             const hourStart = parseInt(option.dataset.hourStart);
-            if ( hourStart === 8 || hourStart === 10 ) {
+            if ( hourStart === 8 || hourStart === 10 || hourStart === 12 ) {
                 const placeholderOption = $hourSelect.find("option").first();
                 placeholderOption.prop("selected", true);
                 option.disabled = true;
