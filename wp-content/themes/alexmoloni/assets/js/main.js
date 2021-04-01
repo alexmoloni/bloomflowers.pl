@@ -1279,13 +1279,19 @@ function init() {
     maxDate: '+1Y',
     beforeShowDay: function beforeShowDay(date) {
       var day = date.getDay();
-      var isSunday = day === 0; //if need to disable sundays or enable valentines
+      var isDisabled = false;
+
+      if (isDayAndMonth(date, 4, 4) || isDayAndMonth(date, 5, 4)) {
+        isDisabled = true;
+      } // const isSunday = day === 0;
+      //if need to disable sundays or enable valentines
       // if ( isValentines(date) ) {
       //     return [true, '', 'Valentines!'];
       // }
       // return [(!isSunday), ''];
 
-      return [true, ''];
+
+      return [!isDisabled, ''];
     },
     onSelect: function onSelect(dateText) {
       var dateSelected = new Date(dateText);

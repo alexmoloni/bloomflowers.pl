@@ -37,13 +37,17 @@ function init() {
         beforeShowDay: function (date) {
 
             const day = date.getDay();
-            const isSunday = day === 0;
+            let isDisabled = false;
+            if (isDayAndMonth(date, 4, 4) || isDayAndMonth(date, 5, 4)) {
+                isDisabled = true;
+            }
+            // const isSunday = day === 0;
             //if need to disable sundays or enable valentines
             // if ( isValentines(date) ) {
             //     return [true, '', 'Valentines!'];
             // }
             // return [(!isSunday), ''];
-            return [true, ''];
+            return [!isDisabled, ''];
         },
         onSelect: function (dateText) {
             const dateSelected = new Date(dateText);
