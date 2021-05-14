@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+    <meta name="facebook-domain-verification" content="p0qtfy8c9dbz22w9c6v1x28lcbgzc1" />
 	<?php wp_head(); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">

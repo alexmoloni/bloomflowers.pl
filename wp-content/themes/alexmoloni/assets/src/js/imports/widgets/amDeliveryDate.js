@@ -38,7 +38,7 @@ function init() {
 
             const day = date.getDay();
             let isDisabled = false;
-            if (isDayAndMonth(date, 4, 4) || isDayAndMonth(date, 5, 4)) {
+            if (isDayAndMonth(date, 1, 5) || isDayAndMonth(date, 2, 5) || isDayAndMonth(date, 3, 5)) {
                 isDisabled = true;
             }
             // const isSunday = day === 0;

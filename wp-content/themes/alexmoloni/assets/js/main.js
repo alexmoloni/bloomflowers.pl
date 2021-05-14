@@ -1281,7 +1281,7 @@ function init() {
       var day = date.getDay();
       var isDisabled = false;
 
-      if (isDayAndMonth(date, 4, 4) || isDayAndMonth(date, 5, 4)) {
+      if (isDayAndMonth(date, 1, 5) || isDayAndMonth(date, 2, 5) || isDayAndMonth(date, 3, 5)) {
         isDisabled = true;
       } // const isSunday = day === 0;
       //if need to disable sundays or enable valentines
